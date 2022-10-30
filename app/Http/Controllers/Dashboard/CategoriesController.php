@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +17,10 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('dashboard.categories.index');
+        $request = request();
+
+        $categories = Category::With('parent')->latest()->filter($request->query())->get();
+        return view('dashboard.categories.index',compact('categories'));
     }
 
     /**
@@ -24,7 +30,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        $parents = Category::get();
+        $category = new Category;
+        return view('dashboard.categories.create',compact('parents','category'));
     }
 
     /**
@@ -35,7 +43,25 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+       $this->rouls($request);
+
+       $data = $request->except('image');
+       if($request->hasFile('image')){
+        $file = $request->file('image');
+        if($file->isValid()){
+            $data['image']  = $file->store('categories',['disk'=>'public']);
+        }
+       }
+            $data['slug']  = Str::slug($request->post('name'));
+
+        $categories = Category::create($data);
+
+        $notification = array(
+            'message' => 'تم اضافة التصنيف بنجاح',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('categories.index')->with('notification');
     }
 
     /**
@@ -57,7 +83,15 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.categories.edit');
+        $category = Category::findOrFail($id);
+
+        $parents = Category::where('id','<>',$id)
+        ->where(function($query) use($id){
+            $query->whereNull('parent_id')
+                  ->orWhere('parent_id','<>',$id);
+        })->get();
+
+        return view('dashboard.categories.edit',compact('category','parents'));
     }
 
     /**
@@ -69,7 +103,27 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->rouls($request);
+
+
+        $category = Category::findOrFail($id);
+
+        $data = $request->except('image');
+
+        $old_image = $category->image;
+
+        $new_image = $this->uploadeImage($request);
+        if($new_image){
+            $data['image'] = $new_image;
+        }
+
+        $category->update($data);
+
+        if($old_image && $new_image){
+            Storage::disk('public')->delete($old_image);
+        }
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -82,4 +136,44 @@ class CategoriesController extends Controller
     {
         //
     }
+    public  function rouls(Request $request){
+        $request->validate([
+            'name'  => "required|min:3|max:255|",
+            'parent_id' => [
+                'int','nullable','exists:categories,id'
+            ],
+            'image'     => [
+                'image','dimensions:min_width=100,min_height=100'
+            ],
+
+           ]
+           ,
+           [
+           'name.required'  => 'هاد الحقل مطلوب',
+           'name.min:3'    => 'يجب ان لا يقل عن 3 احرف',
+           'name.max:255'  => 'يجب ان لا يزيد عن 255 حرف',
+
+        ]);
+
+     }
+
+     protected function uploadeImage(Request $request){
+        if(!$request->hasFile('image')){
+            return;
+        }
+        $file = $request->file('image');
+        $path = $file->store('categories',
+        ['disk' => 'public']
+    );
+    return $path;
+
+    /**
+     * احنا هان جبنا الكود يلي بيتكرر معي في اكثر من مكان وعملتله ميثود
+     * وفي شغلة هي كويسة من ناحية انو الكود يكون نظيف
+     * انو في الشرط احاول اني اقلل من الاكواد
+     * وهان عملت عكس الشرط وحكيتله انو لو م في صورة انو خلاص م يعمل شي لهيك حكيتله ريتيرن بس
+     * اما لو في صورة انو يعمل الخطوات هاد والفكرة هاد مشروحة اخر ربع ساعة من محاضرة Filesystem
+     */
+    }
+
 }

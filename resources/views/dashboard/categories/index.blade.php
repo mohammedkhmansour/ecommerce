@@ -14,6 +14,17 @@
     <div class="card card-statistics h-100">
       <div class="card-body">
        <h5 class="card-title border-0 pb-0">فلتر</h5>
+       <form action="{{URL::current()}}" method="get" class="d-flex justify-content-between mb-4">
+
+        <input type="text" name="name" placeholder="name" class="mx-2" value="{{request('name')}}">
+        <select name="statuse" class="form-control mx-2">
+            <option value="">الكل</option>
+            <option value="فعال" @selected(request('statuse') == 'فعال')>فعال</option>
+            <option value="غير فعال" @selected(request('statuse') == 'غير فعال')>غير فعال</option>
+        </select>
+        <button type="submit" class="mx-2">Filter</button>
+    </form>
+
        <div class="table-responsive">
         <table class="mb-0 table table-hover table-dark">
         <thead>
@@ -28,39 +39,37 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><img src="{{url('no_image.jpg')}}" height="100px" alt=""></td>
-            <td>
-                <a href=""><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
-                <a href="" id="delete"><i class="fa fa-trash" style="font-size:25px;color:rgb(233, 19, 30);"></i> </a>
-           </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td><img src="{{url('no_image.jpg')}}" height="100px" alt=""></td>
-            <td>
-                <a href=""><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
-                <a href="" id="delete"><i class="fa fa-trash" style="font-size:25px;color:rgb(233, 19, 30);"></i> </a>
-           </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td><img src="{{url('no_image.jpg')}}" height="100px" alt=""></td>
-            <td>
-                <a href=""><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
-                <a href="" id="delete"><i class="fa fa-trash" style="font-size:25px;color:rgb(233, 19, 30);"></i> </a>
-           </td>
-          </tr>
+            @php
+                $i = 0;
+            @endphp
+            @forelse ($categories as $category)
+            @php
+           $i++;
+            @endphp
+
+            <tr>
+                <th scope="row">{{$i}}</th>
+                <td>{{$category->name}}</td>
+                <td>{{$category->parent->name}}</td>
+                <td>{{$category->statuse}}</td>
+                {{-- <td>
+                    @if (!$category->image) <img src="{{url('no_image.jpg')}}" height="100px" width="100px" alt="">@endif
+                    @if ($category->image)
+                    <img src="{{asset('storage/' . $category->image)}}" height="100px" width="100px" alt="">
+                    @endif
+
+            </td> --}}
+            <td><img src="{{$category->image_url}}" height="100px" width="100px" alt=""></td>
+                <td>
+                    <a href="{{route('categories.edit',$category->id)}}"><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
+                    <a href="" id="delete"><i class="fa fa-trash" style="font-size:25px;color:rgb(233, 19, 30);"></i> </a>
+               </td>
+              </tr>
+            @empty
+                <tr>no</tr>
+            @endforelse
+
+
         </tbody>
       </table>
       </div>

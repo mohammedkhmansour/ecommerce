@@ -8,24 +8,68 @@
 
 @section('content')
 
-<form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
- <div class="form-group">
-        <label for="">الاسم</label>
-        <input type="text" name="name" class="form-control">
+@if ($errors->any())
+    <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
     </div>
+@endif
+
+<form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
+
+@csrf
+
+<div class="form-group">
+    <label for="">الاسم</label>
+    {{-- <input type="text" name="name" class="form-control" > --}}
+
+    <input type="text" name="name" @class([
+        'form-control',
+        'is-invalid'  => $errors->has('name')
+    ])
+     value="{{old('name',$category->name)}}">
+
+    @error('name')
+    <div class="text-danger">
+        {{$message}}
+    </div>
+@enderror
+</div>
 
     <div class="form-group">
         <label for="">التصنيف الأب</label>
-        <select name="parent_id" class="form-control">
+        <select name="parent_id" @class([
+            'form-control',
+            'is-invalid'  => $errors->has('parent_id')
+        ])>
             <option value="">بدون تصنيف</option>
-            <option value=""></option>
+            @foreach ($parents as $parent)
+            <option value="{{$parent->id}}" @selected($category->parent_id == $parent->id)>{{$parent->name}}</option>
+            @endforeach
+
         </select>
+        @error('parent_id')
+        <div class="text-danger">
+            {{$message}}
+        </div>
+    @enderror
     </div>
 
     <div class="form-group">
         <label for="">الوصف</label>
-        <textarea name="description" class="form-control">
+        <textarea name="description" @class([
+            'form-control',
+            'is-invalid'  => $errors->has('description')
+        ])>
         </textarea>
+        @error('description')
+        <div class="text-danger">
+            {{$message}}
+        </div>
+    @enderror
     </div>
 
 
