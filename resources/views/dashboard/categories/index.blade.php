@@ -1,5 +1,21 @@
 @extends('layouts.master')
 @section('title','categoryies')
+@push('styles')
+    <style>
+    .button-trashed{
+     font-size: 25px;
+    color: rgb(233, 19, 30);
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    text-align: center;
+    margin-top: -8px;
+
+    }
+    </style>
+@endpush
 @section('page-title','كل التصنيفات')
 @section('breadcrumb')
 @parent
@@ -60,9 +76,15 @@
 
             </td> --}}
             <td><img src="{{$category->image_url}}" height="100px" width="100px" alt=""></td>
-                <td>
+                <td class="d-flex">
                     <a href="{{route('categories.edit',$category->id)}}"><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
-                    <a href="" id="delete"><i class="fa fa-trash" style="font-size:25px;color:rgb(233, 19, 30);"></i> </a>
+                    <form action="{{route('categories.destroy',$category->id)}}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="button-trashed">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    </form>
                </td>
               </tr>
             @empty
@@ -72,6 +94,7 @@
 
         </tbody>
       </table>
+      {{$categories->withQueryString()->links()}}
       </div>
     </div>
     </div>

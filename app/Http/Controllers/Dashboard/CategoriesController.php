@@ -19,7 +19,7 @@ class CategoriesController extends Controller
     {
         $request = request();
 
-        $categories = Category::With('parent')->latest()->filter($request->query())->get();
+        $categories = Category::With('parent')->latest()->filter($request->query())->paginate(5);
         return view('dashboard.categories.index',compact('categories'));
     }
 
@@ -134,8 +134,13 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('categories.trashed');
     }
+
     public  function rouls(Request $request){
         $request->validate([
             'name'  => "required|min:3|max:255|",
@@ -174,6 +179,32 @@ class CategoriesController extends Controller
      * وهان عملت عكس الشرط وحكيتله انو لو م في صورة انو خلاص م يعمل شي لهيك حكيتله ريتيرن بس
      * اما لو في صورة انو يعمل الخطوات هاد والفكرة هاد مشروحة اخر ربع ساعة من محاضرة Filesystem
      */
+    }
+
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        // return view('dashboard.categories.trashed',compact('categories'));
+        return view('dashboard.categories.trashed',compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        $categories = Category::onlyTrashed()->findOrFail($id);
+        $categories->restore();
+
+        return redirect()->route('categories.index');
+    }
+
+    public function forsedelete($id)
+    {
+        $categories = Category::onlyTrashed()->findOrFail($id);
+        $categories->forceDelete();
+
+        if($categories->image){
+            Storage::disk('public')->delete($categories->image);
+        }
+        return redirect()->route('categories.index');
     }
 
 }
