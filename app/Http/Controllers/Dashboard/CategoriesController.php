@@ -63,6 +63,7 @@ class CategoriesController extends Controller
 
         $categories = Category::create($data);
 
+        flash()->addSuccess('تم الاضافة بنجاح');
 
 
         return redirect()->route('categories.index')->with('msg', 'تم الاضافة بنجاح')->with('type', 'success');
@@ -126,12 +127,9 @@ class CategoriesController extends Controller
         if($old_image && $new_image){
             Storage::disk('public')->delete($old_image);
         }
-        $notification = array(
-            'message' => 'User Profile Updated Successfully',
-            'alert-type' => 'success'
-        );
 
-        return redirect()->route('categories.index')->with($notification);
+        flash()->addInfo('تم الاضافة بنجاح');
+        return redirect()->route('categories.index');
 
         // return redirect()->route('categories.index')->with('msg', 'تم التعديل بنجاح')->with('type', 'info');;
     }
@@ -147,6 +145,8 @@ class CategoriesController extends Controller
 
         $category = Category::findOrFail($id);
         $category->delete();
+
+        flash()->addError('تم الحذف بنجاح');
 
         return redirect()->route('categories.trashed');
     }
@@ -214,6 +214,9 @@ class CategoriesController extends Controller
         if($categories->image){
             Storage::disk('public')->delete($categories->image);
         }
+
+        flash()->addError('تم الحذف بنجاح');
+
         return redirect()->route('categories.index');
     }
 
