@@ -22,14 +22,7 @@
 <li class="breadcrumb-item active">كل التصنيفات </li>
 @endsection
 @section('content')
-@if (session('msg'))
-<div class="alert alert-{{ session('type') }} alert-dismissible fade show">
-    {{ session('msg') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-</div>
-@endif
+
 <div dir="ltr">
     <a href="{{ route('categories.create') }}" title="اضف تصنيف" class="btn btn-primary mb-3">+</a>
 </div>
@@ -73,9 +66,7 @@
             <tr>
                 <th scope="row">{{$i}}</th>
                 <td>{{$category->name}}</td>
-                {{-- <td>{{$category->parent->name}}</td> هاد باستخدام العلاقة--}}
-                <td>{{$category->parent_name}}</td>
-
+                <td>{{$category->parent->name}}</td>
                 <td>{{$category->statuse}}</td>
                 {{-- <td>
                     @if (!$category->image) <img src="{{url('no_image.jpg')}}" height="100px" width="100px" alt="">@endif

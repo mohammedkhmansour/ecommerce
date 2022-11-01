@@ -19,7 +19,13 @@ class CategoriesController extends Controller
     {
         $request = request();
 
-        $categories = Category::With('parent')->latest()->filter($request->query())->paginate(5);
+        // $categories = Category::With('parent')->latest()->filter($request->query())->paginate(5);
+        $categories = Category::leftJoin('categories as parents','parents.id','=','categories.parent_id')
+        ->select([
+            'categories.*',
+            'parents.name as parent_name'
+        ])->latest()->filter($request->query())->paginate(5);
+
         return view('dashboard.categories.index',compact('categories'));
     }
 
@@ -57,11 +63,9 @@ class CategoriesController extends Controller
 
         $categories = Category::create($data);
 
-        $notification = array(
-            'message' => 'تم اضافة التصنيف بنجاح',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('categories.index')->with('notification');
+
+
+        return redirect()->route('categories.index')->with('msg', 'تم الاضافة بنجاح')->with('type', 'success');
     }
 
     /**
@@ -122,8 +126,14 @@ class CategoriesController extends Controller
         if($old_image && $new_image){
             Storage::disk('public')->delete($old_image);
         }
+        $notification = array(
+            'message' => 'User Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with($notification);
+
+        // return redirect()->route('categories.index')->with('msg', 'تم التعديل بنجاح')->with('type', 'info');;
     }
 
     /**

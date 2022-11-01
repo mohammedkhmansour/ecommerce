@@ -15,6 +15,18 @@ class Category extends Model
     protected $fillable =
     ['name','parent_id','slug','description','image','statuse'];
 
+    public static function booted(){
+
+    //     static::addGlobalScope('parent_name',function(Builder $builder){
+
+
+    //         $builder->leftJoin('categories as parents','parents.id','=','categories.parent_id')
+    //     ->select([
+    //         'categories.*',
+    //         'parents.name as parent_name',
+    //     ]);
+    // }
+    }
     public function getImageUrlAttribute()
     {
         if (!$this->image) {

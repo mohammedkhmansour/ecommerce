@@ -1,8 +1,3 @@
-
-
-<!--=================================
- jquery -->
-
 <!-- jquery -->
 <script src="{{asset('admin/js/jquery-3.3.1.min.js')}}"></script>
 
@@ -48,8 +43,6 @@
 
 <script src="{{asset('admin/js/tostarjs.js')}}"></script>
 
-
-
 <script>
     @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
@@ -69,7 +62,6 @@
     }
     @endif
    </script>
-
 @stack('scripts')
 </body>
 </html>
