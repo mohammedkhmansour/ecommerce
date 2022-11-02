@@ -34,6 +34,7 @@
           <table id="datatable" class="table table-striped table-bordered p-0">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>الاسم</th>
                     <th>الكود</th>
                     <th>التصنيف</th>
@@ -45,10 +46,14 @@
 
                 </tr>
             </thead>
+            @php
+             $i = 0;
+            @endphp
             <tbody>
                 @foreach ($products as $product)
-
+            {{$i++}}
                 <tr>
+                    <td>{{$i}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->product_code}}</td>
                     <td>{{$product->category->name}}</td>

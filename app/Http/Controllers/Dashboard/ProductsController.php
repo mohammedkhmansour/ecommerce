@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
 
-        $products = Product::with('category')->latest()->paginate();
+        $products = Product::with('category')->orderBy('id', 'desc')->get();
 
         return view('dashboard.products.index',compact('products'));
     }
@@ -71,12 +71,13 @@ class ProductsController extends Controller
         //      $tag_ids = $tag->id;
 
         //      $products->tags()->sync($tag_ids);
-        $tags = explode(',',$request->post('tag'));
+        $tags = explode(', ',$request->post('tag'));
         $tags_ids = [];
-        $sved_tags = Tag::all();
+         $sved_tags = Tag::all();
         foreach ($tags as $t_name){
             $slug = Str::slug($t_name);
             $tag = $sved_tags->where('slug',$slug)->first();
+
             if(!$tag){
                 $tag = Tag::create([
                     'name'  => $t_name,
@@ -158,12 +159,14 @@ class ProductsController extends Controller
         //     $tag_ids = $tag->id;
 
         //     $product->tags()->sync($tag_ids);
-        $tags = explode(',',$request->post('tag'));
+        $tags = explode(', ',$request->post('tag'));
         $tags_ids = [];
-        $sved_tags = Tag::all();
+         $sved_tags = Tag::all();
         foreach ($tags as $t_name){
             $slug = Str::slug($t_name);
-            $tag = $sved_tags->where('slug',$slug)->first();
+             $tag = $sved_tags->where('slug',$slug)->first();
+            // $tag = Tag::where('slug',$slug)->first();
+
             if(!$tag){
                 $tag = Tag::create([
                     'name'  => $t_name,
