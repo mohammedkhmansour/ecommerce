@@ -56,6 +56,7 @@
             <th scope="col">الاسم</th>
             <th scope="col">التصنيف الاب</th>
             <th scope="col">الحالة</th>
+            <th scope="col">عدد المنتجات</th>
             <th scope="col">الصورة</th>
             <th scope="col">العمليات</th>
 
@@ -77,6 +78,7 @@
                 <td>{{$category->parent_name}}</td>
 
                 <td>{{$category->statuse}}</td>
+                <td>{{$category->products_count}}</td>
                 {{-- <td>
                     @if (!$category->image) <img src="{{url('no_image.jpg')}}" height="100px" width="100px" alt="">@endif
                     @if ($category->image)

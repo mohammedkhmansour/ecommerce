@@ -29,9 +29,15 @@
     @enderror --}}
     <x-form.input name="name" />
 
+
     </div>
 
     <div class="form-group col-md-6">
+        <label for="">كود المنتج</label>
+    <x-form.input name="product_code" />
+    </div>
+
+    <div class="form-group col-md-12">
         <label for="">التصنيف</label>
         <select name="category_id" class="form-control form-select">
             <option value="">اختر التصنيف</option>
@@ -110,8 +116,8 @@
               </div>
 
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="featured" id="exampleRadios1" value="مميز">
-                <label class="form-check-label" for="exampleRadios1">
+                <input class="form-check-input" type="radio" name="featured" id="exampleRadios3" value="مميز">
+                <label class="form-check-label" for="exampleRadios3">
                   مميز
                 </label>
               </div>
@@ -126,6 +132,23 @@
 
 
 @endsection
+
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+@endpush
+
+@push('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+
+<script>
+    var inputElm = document.querySelector('[name=tag]'),
+    tagify = new Tagify (inputElm);
+
+</script>
+@endpush
+
 
 @push('scripts')
 <script type="text/javascript">

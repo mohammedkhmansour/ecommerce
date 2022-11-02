@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','categoryies')
+@section('title','products')
 @push('styles')
     <style>
     .button-trashed{
@@ -16,88 +16,64 @@
     }
     </style>
 @endpush
-@section('page-title','كل التصنيفات')
+@section('page-title','كل المنتجات')
 @section('breadcrumb')
 @parent
-<li class="breadcrumb-item active">كل التصنيفات </li>
+<li class="breadcrumb-item active">كل المنتجات </li>
 @endsection
 @section('content')
 
 <div dir="ltr">
-    <a href="{{ route('categories.create') }}" title="اضف تصنيف" class="btn btn-primary mb-3">+</a>
+    <a href="{{ route('products.create') }}" title="اضف منتج" class="btn btn-primary mb-3">+</a>
 </div>
-<div class="col-xl-12 mb-30">
-    <div class="card card-statistics h-100">
-      <div class="card-body">
-       <h5 class="card-title border-0 pb-0">فلتر</h5>
-       <form action="{{URL::current()}}" method="get" class="d-flex justify-content-between mb-4">
+<div class="row">
+    <div class="col-xl-12 mb-30">
+      <div class="card card-statistics h-100">
+        <div class="card-body">
+          <div class="table-responsive">
+          <table id="datatable" class="table table-striped table-bordered p-0">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>الكود</th>
+                    <th>التصنيف</th>
+                    <th>الحالة</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>الصورة</th>
+                    <th>عمليات</th>
 
-        <input type="text" name="name" placeholder="name" class="mx-2" value="{{request('name')}}">
-        <select name="statuse" class="form-control mx-2">
-            <option value="">الكل</option>
-            <option value="فعال" @selected(request('statuse') == 'فعال')>فعال</option>
-            <option value="غير فعال" @selected(request('statuse') == 'غير فعال')>غير فعال</option>
-        </select>
-        <button type="submit" class="mx-2">Filter</button>
-    </form>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
 
-       <div class="table-responsive">
-        <table class="mb-0 table table-hover table-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">الاسم</th>
-            <th scope="col">التصنيف الاب</th>
-            <th scope="col">الحالة</th>
-            <th scope="col">الصورة</th>
-            <th scope="col">العمليات</th>
+                <tr>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->product_code}}</td>
+                    <td>{{$product->category->name}}</td>
+                    <td>{{$product->status}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->quantity}}</td>
+                    <td><img src="{{$product->image_url}}" height="100px" width="100px"></td>
+                    <td class="d-flex">
+                        <a href="{{route('products.edit',$product->id)}}"><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
+                        <form action="{{route('products.destroy',$product->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="button-trashed">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                        </form>
+                   </td>
 
-          </tr>
-        </thead>
-        <tbody>
-            @php
-                $i = 0;
-            @endphp
-            @forelse ($categories as $category)
-            @php
-           $i++;
-            @endphp
-
-            <tr>
-                <th scope="row">{{$i}}</th>
-                <td>{{$category->name}}</td>
-                <td>{{$category->parent->name}}</td>
-                <td>{{$category->statuse}}</td>
-                {{-- <td>
-                    @if (!$category->image) <img src="{{url('no_image.jpg')}}" height="100px" width="100px" alt="">@endif
-                    @if ($category->image)
-                    <img src="{{asset('storage/' . $category->image)}}" height="100px" width="100px" alt="">
-                    @endif
-
-            </td> --}}
-            <td><img src="{{$category->image_url}}" height="100px" width="100px" alt=""></td>
-                <td class="d-flex">
-                    <a href="{{route('categories.edit',$category->id)}}"><i class="fa fa-edit" style="font-size:25px;color:rgb(173, 159, 252);"></i> </a>
-                    <form action="{{route('categories.destroy',$category->id)}}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="button-trashed">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                    </form>
-               </td>
-              </tr>
-            @empty
-                <tr>no</tr>
-            @endforelse
-
-
-        </tbody>
-      </table>
-      {{$categories->withQueryString()->links()}}
+                </tr>
+                @endforeach
+         </table>
+        </div>
+        </div>
       </div>
     </div>
-    </div>
-  </div>
+</div>
 
 @endsection

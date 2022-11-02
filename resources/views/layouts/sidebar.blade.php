@@ -44,7 +44,7 @@
                 <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
                     <li><a href="{{route('products.index')}}">كل المنتجات</a></li>
                     <li><a href="{{route('products.create')}}">اضف منتج</a></li>
-                    <li><a href="{{route('categories.trashed')}}">المنتجات المؤرشفة</a></li>
+                    <li><a href="{{route('products.trashed')}}">المنتجات المؤرشفة</a></li>
                 </ul>
             </li>
             <!-- menu item todo-->

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','categoryies')
+@section('title','products')
 @push('styles')
     <style>
     .button-trashed{
@@ -16,15 +16,15 @@
     }
     </style>
 @endpush
-@section('page-title','التصنيفات المؤرشفة ')
+@section('page-title','المنتجات المؤرشفة ')
 @section('breadcrumb')
 @parent
-<li class="breadcrumb-item active">التصنيفات المؤرشفة  </li>
+<li class="breadcrumb-item active">المنتجات المؤرشفة  </li>
 @endsection
 @section('content')
 
 <div dir="ltr">
-    <a href="{{ route('categories.index') }}" title="اضف تصنيف" class="btn btn-primary mb-3">التصنيفات</a>
+    <a href="{{ route('products.index') }}" title="اضف تصنيف" class="btn btn-primary mb-3">التصنيفات</a>
 </div>
 <div class="col-xl-12 mb-30">
     <div class="card card-statistics h-100">
@@ -47,26 +47,19 @@
                 @php
                     $i = 0;
                 @endphp
-                @foreach ( $categories as $category )
+                @foreach ( $products as $product )
                 @php
                $i++;
                 @endphp
 
                 <tr>
                     <th scope="row">{{$i}}</th>
-                    <td>{{$category->name}}</td>
-                    <td>{{$category->parent->name}}</td>
-                    <td>{{$category->statuse}}</td>
-                    {{-- <td>
-                        @if (!$category->image) <img src="{{url('no_image.jpg')}}" height="100px" width="100px" alt="">@endif
-                        @if ($category->image)
-                        <img src="{{asset('storage/' . $category->image)}}" height="100px" width="100px" alt="">
-                        @endif
-
-                </td> --}}
-                <td><img src="{{$category->image_url}}" height="100px" width="100px" alt=""></td>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->category->name}}</td>
+                    <td>{{$product->statuse}}</td>
+                <td><img src="{{$product->image_url}}" height="100px" width="100px" alt=""></td>
                     <td class="d-flex">
-                        <form action="{{route('categories.restore',$category->id)}}" method="post">
+                        <form action="{{route('products.restore',$product->id)}}" method="post">
                         @csrf
                         @method('put')
                         <button type="submit" class="btn btn-info btn-sm mx-2">
@@ -74,30 +67,23 @@
                         </button>
                         </form>
 
-                        {{-- <form action="{{route('categories.forsedelete',$category->id)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                            </form> --}}
 
                         <button type="button" class="btn btn-danger btn-sm mx-2" data-toggle="modal"
-                        data-target="#delete{{ $category->id }}"
+                        data-target="#delete{{ $product->id }}"
                         title="delete"><i
                             class="fa fa-trash"></i></button>
 
                    </td>
                   </tr>
                             <!-- delete_modal_Grade -->
-                            <div class="modal fade" id="delete{{$category->id }}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="delete{{$product->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                <div class="modal-dialog" role="document">
                                    <div class="modal-content">
                                        <div class="modal-header">
                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                id="exampleModalLabel">
-                                                <p>حذف : <b>{{$category->name}}</b></p>
+                                                <p>حذف : <b>{{$product->name}}</b></p>
                                            </h5>
                                            <button type="button" class="close" data-dismiss="modal"
                                                    aria-label="Close">
@@ -105,13 +91,13 @@
                                            </button>
                                        </div>
                                        <div class="modal-body">
-                                           <form action="{{ route('categories.forsedelete',$category->id) }}"
+                                           <form action="{{ route('products.forsedelete',$product->id) }}"
                                                  method="post">
                                                {{ method_field('Delete') }}
                                                @csrf
-                                               <p>هل انت متأكد من عملية الحذف <b>{{$category->name}}</b></p>
+                                               <p>هل انت متأكد من عملية الحذف <b>{{$product->name}}</b></p>
                                                <input id="id" type="hidden" name="id" class="form-control"
-                                                      value="{{ $category->id }}">
+                                                      value="{{ $product->id }}">
                                                <div class="modal-footer">
                                                    <button type="button" class="btn btn-secondary"
                                                            data-dismiss="modal">اغلاق</button>

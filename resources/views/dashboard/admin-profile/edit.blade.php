@@ -113,9 +113,13 @@
     <div class="form-group">
         <label for="">صورة</label>
         <input type="file" name="avatar" class="form-control" id="image">
+
     </div>
     <div class="mb-3">
-        <img id="showImage"  src="{{url('no_image.jpg') }}"  style="width:100px; height: 100px;">
+        {{-- <img id="showImage"  src="{{url('no_image.jpg') }}"  style="width:100px; height: 100px;"> --}}
+        <img id="showImage" src="{{ !empty($user->profile->avatar)?
+            asset('storage/' . $user->profile->avatar) :
+            url('no_image.jpg') }}" class="user-img" alt="user avatar" width="100px" height="100px">
 
     </div>
     <button type="submit" class="btn btn-primary">ارسال</button>

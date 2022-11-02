@@ -24,7 +24,7 @@ class CategoriesController extends Controller
         ->select([
             'categories.*',
             'parents.name as parent_name'
-        ])->latest()->filter($request->query())->paginate(5);
+        ])->latest()->withCount('products')->filter($request->query())->paginate(5);
 
         return view('dashboard.categories.index',compact('categories'));
     }

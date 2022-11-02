@@ -12,7 +12,7 @@ class Profile extends Model
 
     protected $fillable = [
         'user_id','first_name','last_name','birthday','gender','street_address','city','state',
-        'postal_code','contry','locale'
+        'postal_code','contry','locale','avatar'
     ];
 
     public function user(){

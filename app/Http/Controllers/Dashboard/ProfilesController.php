@@ -29,18 +29,20 @@ class ProfilesController extends Controller
                 // $imgname = 'admin'.time().rand().'_'.$request->file('avatar')->getClientOriginalName();
                 // $request->file('image')->move(public_path('storage/avatars'), $imgname);
 
-        // $data = $request->except('avatar');
+         $data = $request->except('avatar');
 
         if ($request->hasFile('avatar')) {
 
+
             $file = $request->file('avatar');
             if ($file->isValid()) {
-                $imgname = 'admin'.time().rand().'_'.$request->file('avatar')->getClientOriginalName();
-                $request->file('avatar')->move(public_path('storage/avatars'), $imgname);
+                $file = $request->file('avatar');
+                $data['avatar']  = $file->store('avatars',['disk'=>'public']);
+
             }
         }
         // dd($data);
-        $user->profile->fill($request->all())->save();
+        $user->profile->fill($data)->save();
 
         return redirect()->route('profile.edit');
     }
