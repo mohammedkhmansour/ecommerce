@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
 
-        $products = Product::with('category')->orderBy('id', 'desc')->get();
+        $products = Product::with('category')->orderBy('id', 'desc')->paginate();
 
         return view('dashboard.products.index',compact('products'));
     }
@@ -88,6 +88,15 @@ class ProductsController extends Controller
 
         }
         $products->tags()->sync($tags_ids);
+
+        if($request->hasFile('galary')){
+            foreach($request->file('galary') as $file){
+                $image_path = $file->store('galary',['disk'=>'public']);
+                $products->images()->create([
+                    'image_path' => $image_path
+                ]);
+            }
+        }
 
          flash()->addSuccess('تم الاضافة بنجاح');
 
@@ -177,6 +186,16 @@ class ProductsController extends Controller
 
         }
         $product->tags()->sync($tags_ids);
+
+        if($request->hasFile('galary')){
+            foreach($request->file('galary') as $file){
+                $image_path = $file->store('galary',['disk'=>'public']);
+                $product->images()->create([
+                    'image_path' => $image_path
+                ]);
+            }
+        }
+
 
         if($old_image && $new_image){
             Storage::disk('public')->delete($old_image);

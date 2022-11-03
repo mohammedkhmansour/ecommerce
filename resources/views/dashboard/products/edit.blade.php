@@ -95,6 +95,19 @@
                 url('no_image.jpg') }}" class="user-img" alt="user avatar" width="100px" height="100px">        </div>
 
         <div class="form-group col-md-6">
+            <label for="">معرض صور</label>
+            <input type="file" name="galary[]" multiple class="form-control" id="galary">
+
+            {{-- <img id="showImage" src="{{ !empty($product->image)? --}}
+                @foreach ($product->images as $image)
+                   <img src="{{asset('storage/' . $image->image_path)}}" width="90">
+                @endforeach
+                {{-- // asset('storage/' . $product->image) : --}}
+
+                {{-- url('no_image.jpg') }}" class="user-img" alt="user avatar" width="100px" height="100px"> --}}
+        </div>
+
+        <div class="form-group col-md-6">
 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="فعال" @checked($product->status == "فعال")>

@@ -101,6 +101,12 @@
         </div>
 
         <div class="form-group col-md-6">
+            <label for="">معرض صور</label>
+            <input type="file" name="galary[]" multiple class="form-control" id="galary">
+
+        </div>
+
+        <div class="form-group col-md-6">
 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="status" id="exampleRadios1" value="فعال">
@@ -162,4 +168,5 @@
        });
     });
  </script>
+
 @endpush
