@@ -149,6 +149,7 @@ class ProductsController extends Controller
 
         $old_image = $product->image;
 
+
         $new_image = $this->uploadeImage($request);
         if($new_image){
             $data['image'] = $new_image;
@@ -200,6 +201,7 @@ class ProductsController extends Controller
         if($old_image && $new_image){
             Storage::disk('public')->delete($old_image);
         }
+
 
         flash()->addInfo('تم التعديل بنجاح');
         return redirect()->route('products.index');
