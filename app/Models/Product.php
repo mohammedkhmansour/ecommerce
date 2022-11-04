@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -48,5 +49,24 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class,'product_id','id');
+    }
+
+    public function scopeActivestatus(Builder $builder)
+    {
+        $builder->where('status','=','فعال');
+    }
+
+    public function scopeActivefeatured(Builder $builder)
+    {
+        $builder->where('featured','=','مميز');
+    }
+
+    // هاد عشان اجيب نسبة الخصم
+    public function getSalePrice()
+    {
+        if(!$this->compare_price){
+            return 0;
+        }
+        return round(100 - (100 * $this->price / $this->compare_price),1);
     }
 }
