@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\HomePageController;
 use App\Http\Controllers\Front\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::get('/dashboard', function () {
 Route::get('products',[ProductController::class,'index'])->name('front.products.index');
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('front.products.show');
 
+Route::resource('cart', CartController::class);
 
 require __DIR__.'/auth.php';
 
