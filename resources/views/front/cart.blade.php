@@ -234,8 +234,11 @@
                                     </thead> -->
                                     <tbody>
                                         @foreach ($cart->get() as $item)
-                                        <tr>
-                                            <td class="cart-product-remove">x</td>
+                                        <tr id="{{ $item->id }}">
+                                            <td class="cart-product-remove">
+                                                <a class="remove-item" data-id="{{ $item->id }}" href="javascript:void(0)"><i class="lni lni-close"></i>x</a>
+
+                                            </td>
                                             <td class="cart-product-image">
                                                 <a href="product-details.html"><img src="{{$item->product->image_url}}" width="60" alt="#"></a>
                                             </td>
@@ -245,7 +248,7 @@
                                             <td class="cart-product-price">{{Currency::format($item->product->price)}}</td>
                                             <td class="cart-product-quantity">
                                                 <div class="cart-plus-minus">
-                                                    <input type="text" value="{{ $item->quantity }}" name="quantity" class="cart-plus-minus-box">
+                                                    <input type="text"class="cart-plus-minus-box item-quantity" data-id="{{ $item->id }}" value="{{ $item->quantity }}">
                                                 </div>
                                             </td>
                                             <td class="cart-product-subtotal">{{ Currency::format($item->quantity * $item->product->price) }}</td>
@@ -348,4 +351,60 @@
             </div>
         </div>
         <!-- FEATURE AREA END -->
+        @push('scripts')
+        <script>
+            const csrf_token = "{{ csrf_token() }}";
+        </script>
+            <script src="{{asset('admin/js/jquery-3.3.1.min.js')}}"></script>
+
+
+            <script>
+                (function($) {
+
+$('.item-quantity').on('change', function(e) {
+
+    $.ajax({
+        url: "/cart/" + $(this).data('id'), //data-id
+        method: 'put',
+        data: {
+            quantity: $(this).val(),
+            _token: csrf_token
+        }
+    });
+});
+
+$('.remove-item').on('click', function(e) {
+
+    let id = $(this).data('id');
+    $.ajax({
+        url: "/cart/" + id, //data-id
+        method: 'delete',
+        data: {
+            _token: csrf_token
+        },
+        success: response => {
+            $(`#${id}`).remove();
+        }
+    });
+});
+
+$('.add-to-cart').on('click', function(e) {
+
+    $.ajax({
+        url: "/cart",
+        method: 'post',
+        data: {
+            product_id: $(this).data('id'),
+            quantity: $(this).data('quantity'),
+            _token: csrf_token
+        },
+        success: response => {
+            alert('product added')
+        }
+    });
+});
+
+})(jQuery);
+            </script>
+        @endpush
 </x-front-layout>

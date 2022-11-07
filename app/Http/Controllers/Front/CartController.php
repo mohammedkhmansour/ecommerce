@@ -46,12 +46,7 @@ class CartController extends Controller
         $product = Product::findOrFail($request->post('product_id'));
         $this->cart->add($product, $request->post('quantity'));
 
-        if ($request->expectsJson()) {
 
-            return response()->json([
-                'message' => 'Item added to cart!',
-            ], 201);
-        }
 
         return redirect()->route('cart.index')
             ->with('success', 'Product added to cart!');

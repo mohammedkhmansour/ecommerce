@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{asset('front/css/responsive.css')}}">
+
+    @stack('styles')
 </head>
 
 <body>
@@ -234,7 +236,7 @@
                         <div class="mini-cart-icon">
                             <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                 <i class="icon-shopping-cart"></i>
-                                <sup>2</sup>
+                                <sup></sup>
                             </a>
                         </div>
                         <!-- mini-cart -->
@@ -255,6 +257,7 @@
         <!-- ltn__header-middle-area end -->
     </header>
     <!-- HEADER AREA END -->
+    <x-cart-menu />
 
     <!-- Utilize Cart Menu Start -->
     {{$slot}}
@@ -418,7 +421,7 @@
     <script src="{{asset('front/js/plugins.js')}}"></script>
     <!-- Main JS -->
     <script src="{{asset('front/js/main.js')}}"></script>
-
+    @stack('scripts')
 </body>
 </html>
 

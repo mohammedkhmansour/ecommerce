@@ -2,9 +2,7 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-6">
     <div class="ltn__product-item ltn__product-item-3 text-left">
         <div class="product-img">
-            <form action="{{ route('cart.store') }}" method="post">
-                @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id }}">
+
             <a href="product-details.html"><img src="{{$product->image_url}}" alt="#" loading="lazy"></a>
             <div class="product-badge">
                 <ul>
@@ -19,11 +17,11 @@
                         </a>
                     </li>
                     <li>
-                        <button type="submit">
+
                         <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
                             <i class="fas fa-shopping-cart"></i>
                         </a>
-                    </button>
+
                     </li>
                     <li>
 
@@ -33,7 +31,7 @@
                     </li>
                 </ul>
             </div>
-        </form>
+
         </div>
         <div class="product-info">
             <div class="product-ratting">
