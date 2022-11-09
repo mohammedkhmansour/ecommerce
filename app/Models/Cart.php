@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Builder;
 
 class Cart extends Model
 {
@@ -22,17 +22,19 @@ class Cart extends Model
     {
         // static::observe(CartObserver::class);
 
-        static::addGlobalScope('cookie_id', function(Builder $builder) {
-            $builder->where('cookie_id', '=', Cart::getCookieId());
+        static::creating(function(Cart $cart){
+
+            $cart->id = Str::uuid();
+            $cart->cookie_id= Cart::getCookieId();
         });
 
-        static::creating(function(Cart $cart) {
-        $cart->id = Str::uuid();
-       $cart->cookie_id = Cart::getCookieId();
-
+        static::addGlobalScope('cookie_id',function(Builder $builder){
+            $builder->where('cookie_id','=', Cart::getCookieId());
         });
 
     }
+
+
 
     public static function getCookieId()
     {

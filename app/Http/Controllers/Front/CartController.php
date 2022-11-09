@@ -47,9 +47,14 @@ class CartController extends Controller
         $this->cart->add($product, $request->post('quantity'));
 
 
+        if($request->expectsJson()){
+            return response()->json([
+                'message'   => 'product add'
+            ],201);
+        }
 
-        return redirect()->route('cart.index')
-            ->with('success', 'Product added to cart!');
+        return redirect()->route('cart.index');
+
     }
 
     /**
@@ -78,8 +83,5 @@ class CartController extends Controller
     {
         $this->cart->delete($id);
 
-        return [
-            'message' => 'Item deleted!',
-        ];
     }
 }
