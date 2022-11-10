@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\HomePageController;
 use App\Http\Controllers\Front\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::get('/dashboard', function () {
 
 Route::get('products',[ProductController::class,'index'])->name('front.products.index');
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('front.products.show');
+
+Route::get('checkout', [CheckoutController::class, 'create'])->name('checkout');
+Route::post('checkout', [CheckoutController::class, 'store']);
 
 Route::resource('cart', CartController::class);
 

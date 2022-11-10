@@ -279,7 +279,7 @@
                                     </tbody>
                                 </table>
                                 <div class="btn-wrapper text-right">
-                                    <a href="checkout.html" class="theme-btn-1 btn btn-effect-1">اذهب الى الدفع</a>
+                                    <a href="{{route('checkout')}}" class="theme-btn-1 btn btn-effect-1">اذهب الى الدفع</a>
                                 </div>
                             </div>
                         </div>
