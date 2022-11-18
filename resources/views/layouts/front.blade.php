@@ -237,7 +237,7 @@
 
                                         @else
                                         <li><a href="{{route('login')}}">تسجيل الدخول</a></li>
-                                        <li><a href="register.html">التسجيل</a></li>
+                                        <li><a href="{{route('register')}}">التسجيل</a></li>
                                         @endauth
 
 

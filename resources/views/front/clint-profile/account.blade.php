@@ -185,15 +185,15 @@
                                                             </div>
                                                         </div>
                                                         <fieldset>
-                                                            <legend>Password change</legend>
+                                                            <legend>تغيير كلمة المرور</legend>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <label>Current password (leave blank to leave unchanged):</label>
-                                                                    <input type="password" name="ltn__name">
-                                                                    <label>New password (leave blank to leave unchanged):</label>
-                                                                    <input type="password" name="ltn__lastname">
-                                                                    <label>Confirm new password:</label>
-                                                                    <input type="password" name="ltn__lastname">
+                                                                    <label>كلمة المرور القديمة:</label>
+                                                                    <input type="password" name="password">
+                                                                    <label>كلمة المرور الجديدة:</label>
+                                                                    <input type="password" name="new_password">
+                                                                    <label>تأكيد كلمة المرور:</label>
+                                                                    <input type="password" name="new_password_confirmation">
                                                                 </div>
                                                             </div>
                                                         </fieldset>

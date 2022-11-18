@@ -144,7 +144,7 @@
                 <label class="mb-10" for="password"> تاكيد كلمة المرور* </label>
                   <input class="Password form-control" id="password" type="password" placeholder="password_confirmation" name="password_confirmation">
                </div>
-               <button type="submit">
+               <button class="button" type="submit">
                 تسجيل
                </button>
 

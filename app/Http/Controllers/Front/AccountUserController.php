@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AccountUserController extends Controller
 {
@@ -20,12 +21,24 @@ class AccountUserController extends Controller
     {
 
         $user = $request->user();
-                // Upload Image
-                // $imgname = 'admin'.time().rand().'_'.$request->file('avatar')->getClientOriginalName();
-                // $request->file('image')->move(public_path('storage/avatars'), $imgname);
 
         $user->profile->fill($request->all())->save();
 
+        $request->validate([
+            'password'  => ['required'],
+            'new_password' => ['required','confirmed']
+        ]);
+        $user->forceFill([
+
+            'password'  =>Hash::make($request->post('new_password')),
+            'remember_token'    => null,
+        ])->save();
+
         return redirect()->route('user.account');
+    }
+
+    public function changePassword()
+    {
+
     }
 }

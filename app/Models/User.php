@@ -25,6 +25,19 @@ class User extends Authenticatable
         'phone'
     ];
 
+    protected static function booted()
+    {
+        // static::observe(CartObserver::class);
+
+        static::creating(function(User $user){
+            $user->type = 'user';
+
+        });
+
+
+
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
