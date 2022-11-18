@@ -224,10 +224,24 @@
                                 <li>
                                     <a href="#"><i class="icon-user"></i></a>
                                     <ul>
-                                        <li><a href="login.html">Sign in</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="account.html">My Account</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        @auth
+                                        <li><a href="{{route('user.account')}}">صفحتي الشخصية</a></li>
+                                        <li><a href="wishlist.html">المفضلة</a></li>
+
+                                        <li>
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit()">تسجيل الخروج</a>
+                                        </li>
+                                        <form action="{{ route('logout') }}" id="logout" method="post" style="display:none">
+                                            @csrf
+                                        </form>
+
+                                        @else
+                                        <li><a href="{{route('login')}}">تسجيل الدخول</a></li>
+                                        <li><a href="register.html">التسجيل</a></li>
+                                        @endauth
+
+
+
                                     </ul>
                                 </li>
                             </ul>
