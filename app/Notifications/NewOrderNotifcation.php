@@ -5,6 +5,8 @@ namespace App\Notifications;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
+
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -27,7 +29,7 @@ class NewOrderNotifcation extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        return ['mail','database', 'broadcast'];
     }
 
     /**
@@ -56,6 +58,17 @@ class NewOrderNotifcation extends Notification
         ];
     }
 
+    public function toBroadcast($notifiable)
+    {
+
+        return new BroadcastMessage([
+            // 'body' => "A new order (#{$this->order->number}) created by {$addr->name} from {$addr->country_name}.",
+            'body' => "A new order (#{$this->order->number})",
+            'icon' => 'fas fa-file',
+            'url' => url('/dashboard'),
+            'order_id' => $this->order->id,
+        ]);
+    }
 
     /**
      * Get the array representation of the notification.
