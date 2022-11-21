@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
+use App\Http\Controllers\Front\NotifactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -10,6 +11,14 @@ Route::group([
     'prefix'    => 'dashboard',
     'dashboard' => 'dashboard.',
 ],function(){
+
+    Route::get('MarkAsRead_all',[NotifactionController::class,'MarkAsRead_all'])->name('MarkAsRead_all');
+    Route::get('notifactionred',[NotifactionController::class,'notifactionred'])->name('notifactionred');
+
+
+
+
+    // Route::get('/notifacation',[NotifactionController::class,'index'])->name('notifacations');
 
     // Route::view('categories/trashed','dashboard/categories/trashed')->name('categories.trashed');
     Route::get('/categories/trashed',[CategoriesController::class,'trash'])->name('categories.trashed');

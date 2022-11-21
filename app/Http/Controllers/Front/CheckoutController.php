@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\User;
+use App\Notifications\NewOrderNotifcation;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +74,10 @@ class CheckoutController extends Controller
         }
 
 
+    $user = User::where('type','<>','admin')->first();
+    $user->notify(new NewOrderNotifcation($order));
     return redirect()->route('home');
+
     }
 
 }

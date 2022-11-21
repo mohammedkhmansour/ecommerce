@@ -52,14 +52,20 @@
           <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
             <div class="dropdown-header notifications">
               <strong>Notifications</strong>
-              <span class="badge badge-pill badge-warning">05</span>
+              <span class="badge badge-pill badge-warning">
+                {{ auth()->user()->unreadNotifications->count() }}
+                @if (auth()->user()->unreadNotifications->count())
+
+                <a href="{{route('MarkAsRead_all')}}">تعيين الكل</a>
+                @endif
+              </span>
+
             </div>
+
+            @foreach (auth()->user()->unreadNotifications as $notification)
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">New registered user <small class="float-right text-muted time">Just now</small> </a>
-            <a href="#" class="dropdown-item">New invoice received <small class="float-right text-muted time">22 mins</small> </a>
-            <a href="#" class="dropdown-item">Server error report<small class="float-right text-muted time">7 hrs</small> </a>
-            <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1 days</small> </a>
-            <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2 days</small> </a>
+            <a href="{{$notification->data['action']}}" class="dropdown-item">{{$notification->data['title']}} <small class="float-right text-muted time">{{$notification->created_at->diffForHumans()}}</small> </a>
+            @endforeach
           </div>
         </li>
         <li class="nav-item dropdown ">
