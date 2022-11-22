@@ -66,6 +66,12 @@ class CheckoutController extends Controller
             $cart->empty();
             DB::commit();
 
+
+            event('order.created',$order);
+
+    $user = User::where('type','<>','admin')->first();
+    $user->notify(new NewOrderNotifcation($order));
+
         } catch (Throwable $e) {
 
 
@@ -73,9 +79,6 @@ class CheckoutController extends Controller
             throw $e;
         }
 
-
-    $user = User::where('type','<>','admin')->first();
-    $user->notify(new NewOrderNotifcation($order));
     return redirect()->route('home');
 
     }
