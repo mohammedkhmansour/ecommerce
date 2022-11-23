@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
     return view('indexhome');
 })->middleware(['auth', 'verified',UserCheck::class])->name('dashboard');
 
+Route::post('products/{product}/reviews',[ProductController::class,'reviews'])->name('products.reviews');
 Route::get('products',[ProductController::class,'index'])->name('front.products.index');
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('front.products.show');
 

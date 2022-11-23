@@ -33,6 +33,11 @@ class Product extends Model
         return $this->BelongsTo(Category::class,'category_id','id')->withDefault();
     }
 
+    public function reviews()
+    {
+        return $this->morphMany(Review::class,'reviewsble');
+    }
+
     public function tags()
     {
         return $this->belongsToMany(
