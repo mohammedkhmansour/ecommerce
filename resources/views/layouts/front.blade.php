@@ -226,7 +226,7 @@
                                     <ul>
                                         @auth
                                         <li><a href="{{route('user.account')}}">صفحتي الشخصية</a></li>
-                                        <li><a href="wishlist.html">المفضلة</a></li>
+                                        <li><a href="{{route('favourites.index')}}">المفضلة</a></li>
 
                                         <li>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit()">تسجيل الخروج</a>

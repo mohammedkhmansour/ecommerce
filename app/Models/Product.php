@@ -51,6 +51,10 @@ class Product extends Model
         );
     }
 
+    public function favouritesUsers()
+    {
+        return $this->belongsToMany(User::class,'favourites');
+    }
     public function images()
     {
         return $this->hasMany(ProductImage::class,'product_id','id');

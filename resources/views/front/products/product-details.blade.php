@@ -99,7 +99,7 @@
                                     <div class="ltn__product-details-menu-3">
                                         <ul>
                                             <li>
-                                                <a href="#" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                                                <a href="#" data-toggle="favourites" data-id="{{$product->id}}" class="" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
                                                     <i class="far fa-heart"></i>
                                                     <span>Add to Wishlist</span>
                                                 </a>
@@ -692,4 +692,44 @@
         </div>
     </div>
     <!-- FEATURE AREA END -->
+    @push('scripts')
+<script>
+    const csrf_token = "{{ csrf_token() }}";
+</script>
+    <script src="{{asset('admin/js/jquery-3.3.1.min.js')}}"></script>
+
+<script>
+
+(function($){
+
+    $('[data-toggle="favourites"]').on('click',function(e){
+
+        e.preventDefault();
+        // $.post('/favourites',{
+        //     product_id : $(this).data('id'),
+        //     _token : csrf_token
+        // },function(response){
+        //     alert(response.message)
+        // })
+
+        $.ajax({
+        url: "/favourites",
+        method: 'post',
+        data: {
+            product_id: $(this).data('id'),
+            _token: csrf_token
+        },
+        success: response => {
+            alert(response.message)
+        }
+    });
+
+    })
+
+
+})(jQuery);
+
+            </script>
+        @endpush
 </x-front-layout>
+

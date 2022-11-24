@@ -3,6 +3,7 @@
 use App\Http\Controllers\Front\AccountUserController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\FavouriteController;
 use App\Http\Controllers\Front\HomePageController;
 use App\Http\Controllers\Front\ProductController;
 use App\Http\Middleware\UserCheck;
@@ -28,7 +29,13 @@ Route::get('/dashboard', function () {
     return view('indexhome');
 })->middleware(['auth', 'verified',UserCheck::class])->name('dashboard');
 
+Route::get('favourites',[FavouriteController::class,'index'])->name('favourites.index')->middleware('auth');
+Route::post('favourites',[FavouriteController::class,'store'])->name('favourites.store')->middleware('auth');
+Route::delete('favourites/{id}',[FavouriteController::class,'destroy'])->name('favourites.destroy')->middleware('auth');
+
+
 Route::post('products/{product}/reviews',[ProductController::class,'reviews'])->name('products.reviews');
+
 Route::get('products',[ProductController::class,'index'])->name('front.products.index');
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('front.products.show');
 

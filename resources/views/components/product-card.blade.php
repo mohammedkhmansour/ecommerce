@@ -25,10 +25,17 @@
                     </li>
                     <li>
 
-                            <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                <i class="far fa-heart"></i></a>
+                        <a href="{{route('favourites.store')}}" onclick="event.preventDefault(); document.getElementById('wish').submit()" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
+                            <i class="far fa-heart"></i></a>
 
-                    </li>
+                </li>
+                    <form action="{{route('favourites.store')}}" id="wish" method="post" style="display:none">
+                    @csrf
+
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                </form>
+
+
                 </ul>
             </div>
 
