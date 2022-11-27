@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\OredersManegmentController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
 use App\Http\Controllers\Front\NotifactionController;
@@ -11,6 +12,19 @@ Route::group([
     'prefix'    => 'dashboard',
     'dashboard' => 'dashboard.',
 ],function(){
+
+
+    //order
+    Route::get('order/pending',[OredersManegmentController::class,'OrderPending'])->name('order.pending');
+    Route::get('order/processing',[OredersManegmentController::class,'OrderProcessing'])->name('order.processing');
+    Route::get('order/completed',[OredersManegmentController::class,'OrderCompleted'])->name('order.completed');
+    Route::get('order/details/{id}',[OredersManegmentController::class,'OrderDetails'])->name('order.details');
+    Route::get('status/processing/{id}',[OredersManegmentController::class,'PendingToprocessing'])->name('order.status.processing');
+    Route::get('status/completed/{id}',[OredersManegmentController::class,'ProcessingTocompleted'])->name('order.status.completed');
+    Route::delete('order/delete/{id}',[OredersManegmentController::class,'destroy'])->name('order.destroy');
+
+
+
 
     Route::get('MarkAsRead_all',[NotifactionController::class,'MarkAsRead_all'])->name('MarkAsRead_all');
     Route::get('notifactionred',[NotifactionController::class,'notifactionred'])->name('notifactionred');

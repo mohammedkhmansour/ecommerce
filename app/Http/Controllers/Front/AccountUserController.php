@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,9 @@ class AccountUserController extends Controller
     {
         // $user = User::with('profile')->where('type','user')->get();
         $user = Auth::user();
-        return view('front.clint-profile.account',compact('user'));
+        $orders = Order::with('orderItems')->where('user_id',$user->id)->orderBy('id','DESC')->get();
+
+        return view('front.clint-profile.account',compact('user','orders'));
     }
 
     public function update(Request $request)
