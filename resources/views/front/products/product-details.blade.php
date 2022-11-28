@@ -306,7 +306,7 @@
                 <div class="col-lg-12">
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="{{$productrating->image_url}}" alt="#"></a>
+                            <a href="product-details.html"><img src="{{$productrelated->image_url}}" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="sale-badge"></li>
@@ -331,11 +331,11 @@
                                     <li><a href="#"><i class="far fa-star"></i></a></li>
                                 </ul>
                             </div>
-                            <h2 class="product-title"><a href="product-details.html">{{$productrating->name}}</a></h2>
+                            <h2 class="product-title"><a href="product-details.html">{{$productrelated->name}}</a></h2>
                             <div class="product-price">
-                                <span>{{Currency::format($productrating->price)}}</span>
-                                @if ($productrating->compare_price)
-                                <del>{{Currency::format($productrating->compare_price)}}</del>
+                                <span>{{Currency::format($productrelated->price)}}</span>
+                                @if ($productrelated->compare_price)
+                                <del>{{Currency::format($productrelated->compare_price)}}</del>
                                 @endif
                             </div>
                         </div>

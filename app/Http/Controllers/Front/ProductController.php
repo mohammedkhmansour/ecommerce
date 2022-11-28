@@ -20,10 +20,16 @@ class ProductController extends Controller
         if ($product->status != "فعال"){
             abort(404);
         }
+        $product_categories_ids = $product->category()->pluck('id');
 
         $rating = $product->reviews()->avg('rating');
         $productratings = $product->reviews()->orderBy('rating', 'DESC')->get();
-        $productrelateds = Product::inRandomOrder()->limit(4)->get();
+        $productrelateds = Product::whereHas('category',function($cat) use($product_categories_ids){
+            $cat->whereIn('category_id',$product_categories_ids);
+        })->limit(5)->latest()->get();
+        // $productrelateds = Product::leftJoin('categories as category','category.id','=','products.category_id')->limit(4)->get();
+
+         return $productrelateds;
         return view('front.products.product-details',compact('product','rating','productratings','productrelateds'));
     }
 
