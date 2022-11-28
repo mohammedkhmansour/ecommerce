@@ -96,7 +96,7 @@
                     <div class="col">
                         <div class="site-logo-wrap">
                             <div class="site-logo">
-                                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                <a href="{{route('home')}}"><img src="img/logo.png" alt="Logo"></a>
                             </div>
                         </div>
                     </div>
@@ -105,96 +105,16 @@
                             <nav>
                                 <div class="ltn__main-menu">
                                     <ul>
-                                        <li class="menu-icon"><a href="#">Home</a>
-                                            <ul class="sub-menu ltn__sub-menu-col-2---">
-                                                <li><a href="index.html">Home Pages 01</a></li>
-                                                <li><a href="index-2.html">Home Pages 02</a></li>
-                                                <li><a href="index-3.html">Home Pages 03</a></li>
-                                                <li><a href="index-4.html">Home Pages 04</a></li>
-                                                <li><a href="index-5.html">Home Pages 05</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-icon"><a href="#">About</a>
-                                            <ul>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="service.html">Services</a></li>
-                                                <li><a href="service-details.html">Service Details</a></li>
-                                                <li><a href="portfolio.html">Gallery</a></li>
-                                                <li><a href="portfolio-2.html">Gallery - 02</a></li>
-                                                <li><a href="portfolio-details.html">Gallery Details</a></li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="team-details.html">Team Details</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="locations.html">Google Map Locations</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-icon"><a href="#">Shop</a>
-                                            <ul>
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                                <li><a href="product-details.html">Shop details </a></li>
-                                                <li><a href="#">Other Pages <span class="float-right">>></span></a>
-                                                    <ul>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="order-tracking.html">Order Tracking</a></li>
-                                                        <li><a href="account.html">My Account</a></li>
-                                                        <li><a href="login.html">Sign in</a></li>
-                                                        <li><a href="register.html">Register</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-icon"><a href="#">News</a>
-                                            <ul>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="blog-grid.html">News Grid</a></li>
-                                                <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                                                <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                                                <li><a href="blog-details.html">News details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-icon"><a href="#">Pages</a>
-                                            <ul class="mega-menu">
-                                                <li><a href="#">Inner Pages</a>
-                                                    <ul>
-                                                        <li><a href="portfolio.html">Gallery</a></li>
-                                                        <li><a href="portfolio-2.html">Gallery - 02</a></li>
-                                                        <li><a href="portfolio-details.html">Gallery Details</a></li>
-                                                        <li><a href="team.html">Team</a></li>
-                                                        <li><a href="team-details.html">Team Details</a></li>
-                                                        <li><a href="faq.html">FAQ</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Inner Pages</a>
-                                                    <ul>
-                                                        <li><a href="history.html">History</a></li>
-                                                        <li><a href="contact.html">Appointment</a></li>
-                                                        <li><a href="locations.html">Google Map Locations</a></li>
-                                                        <li><a href="404.html">404</a></li>
-                                                        <li><a href="contact.html">Contact</a></li>
-                                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Shop Pages</a>
-                                                    <ul>
-                                                        <li><a href="shop.html">Shop</a></li>
-                                                        <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                        <li><a href="product-details.html">Shop details </a></li>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="shop.html"><img src="img/banner/menu-banner-1.png" alt="#"></a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li class="special-link"><a href="contact.html">GET A QUOTE</a></li>
+                                        <li><a href="contact.html">الرئيسية</a></li>
+
+                                        <li><a href="contact.html">المتجر</a></li>
+
+                                        <li><a href="contact.html">من نحن</a></li>
+
+                                        <li><a href="contact.html">مثال على صفحة</a></li>
+                                        <li><a href="contact.html">مثال على صفحة</a></li>
+
+                                        <li class="special-link"><a href="contact.html">اتصل بنا</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -202,7 +122,7 @@
                     </div>
                     <div class="ltn__header-options ltn__header-options-2">
                         <!-- header-search-1 -->
-                        <div class="header-search-wrap">
+                        {{-- <div class="header-search-wrap">
                             <div class="header-search-1">
                                 <div class="search-icon">
                                     <i class="icon-search for-search-show"></i>
@@ -217,7 +137,7 @@
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- user-menu -->
                         <div class="ltn__drop-menu user-menu">
                             <ul>
@@ -289,7 +209,7 @@
                                     <img src="img/logo.png" alt="Logo">
                                 </div>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
+                            <p>لوريم إيبسوم هو ببساطة نص شكلي في صناعة التنضيد والتنضيد. لوريم إيبسوم هو نص شكلي للطباعة.</p>
                             <div class="footer-address">
                                 <ul>
                                     <li>
@@ -297,7 +217,7 @@
                                             <i class="icon-placeholder"></i>
                                         </div>
                                         <div class="footer-address-info">
-                                            <p>Brooklyn, New York, United States</p>
+                                            <p>فلسطين - قطاع غزة</p>
                                         </div>
                                     </li>
                                     <li>
@@ -305,7 +225,7 @@
                                             <i class="icon-call"></i>
                                         </div>
                                         <div class="footer-address-info">
-                                            <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                            <p><a href="tel:+0123-456789">+972597823611</a></p>
                                         </div>
                                     </li>
                                     <li>
@@ -313,7 +233,7 @@
                                             <i class="icon-mail"></i>
                                         </div>
                                         <div class="footer-address-info">
-                                            <p><a href="mailto:example@example.com">example@example.com</a></p>
+                                            <p><a href="mailto:mohammedmansour@gmail.com">mohammedmansour@gmail.com</a></p>
                                         </div>
                                     </li>
                                 </ul>
@@ -330,53 +250,53 @@
                     </div>
                     <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-menu-widget clearfix">
-                            <h4 class="footer-title">Company</h4>
+                            <h4 class="footer-title">صفحاتنا</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="shop.html">All Products</a></li>
-                                    <li><a href="locations.html">Locations Map</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="about.html">من نحن</a></li>
+                                    <li><a href="blog.html">المدونة</a></li>
+                                    <li><a href="shop.html">المتجر</a></li>
+                                    <li><a href="locations.html">مكاننا على الخريطة</a></li>
+                                    <li><a href="faq.html">الاسئلة الشائعة</a></li>
+                                    <li><a href="contact.html">اتصل بنا</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-menu-widget clearfix">
-                            <h4 class="footer-title">Services.</h4>
+                            <h4 class="footer-title">الخدمات.</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="order-tracking.html">Order tracking</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="account.html">My account</a></li>
-                                    <li><a href="about.html">Terms & Conditions</a></li>
-                                    <li><a href="about.html">Promotional Offers</a></li>
+                                    <li><a href="order-tracking.html">شحن المنتجات</a></li>
+                                    <li><a href="wishlist.html">المفضلة</a></li>
+                                    <li><a href="login.html">تسجيل الدخول</a></li>
+                                    <li><a href="account.html">حسابي</a></li>
+                                    <li><a href="about.html">فريق العمل</a></li>
+                                    <li><a href="about.html">تقييم المنتجات</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                         <div class="footer-widget footer-menu-widget clearfix">
-                            <h4 class="footer-title">Customer Care</h4>
+                            <h4 class="footer-title">صفحات مخصصة</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="account.html">My account</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="order-tracking.html">Order tracking</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="login.html">تسجيل الدخول</a></li>
+                                    <li><a href="account.html">الصفحة الشخصية</a></li>
+                                    <li><a href="wishlist.html">المفضلة</a></li>
+                                    <li><a href="order-tracking.html">تتبع الشحن</a></li>
+                                    <li><a href="faq.html">الاسئلة الشائعة</a></li>
+                                    <li><a href="contact.html">اتصل بنا</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 col-sm-12 col-12">
                         <div class="footer-widget footer-newsletter-widget">
-                            <h4 class="footer-title">Newsletter</h4>
-                            <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
+                            <h4 class="footer-title">القائمة البريدية</h4>
+                            <p>اشترك في النشرة الإخبارية الأسبوعية لدينا وتلقي التحديثات عبر البريد الإلكتروني.</p>
                             <div class="footer-newsletter">
                                 <form action="#">
                                     <input type="email" name="email" placeholder="Email*">
@@ -385,8 +305,8 @@
                                     </div>
                                 </form>
                             </div>
-                            <h5 class="mt-30">We Accept</h5>
-                            <img src="img/icons/payment-4.png" alt="Payment Image">
+                            <h5 class="mt-30">طرق الدفع</h5>
+                            <img src="{{asset('front/img/icons/payment-4.png')}}" alt="Payment Image">
                         </div>
                     </div>
                 </div>

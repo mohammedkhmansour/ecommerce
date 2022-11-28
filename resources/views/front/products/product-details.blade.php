@@ -248,10 +248,13 @@
                         <div class="widget ltn__top-rated-product-widget">
                             <h4 class="ltn__widget-title ltn__widget-title-border">Top Rated Product</h4>
                             <ul>
+                                @foreach ($productratings as $productrating)
+
+
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
+                                            <a href="product-details.html"><img src="{{$productrating->image_url}}" alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
                                             <div class="product-ratting">
@@ -263,66 +266,21 @@
                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="product-details.html">Mixel Solid Seat Cover</a></h6>
+                                            <h6><a href="product-details.html">{{$productrating->name}}</a></h6>
                                             <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
+                                                <span>{{Currency::format($productrating->price)}}</span>
+                                                @if ($productrating->compare_price)
+                                                <del>{{Currency::format($productrating->compare_price)}}</del>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Vegetables Juices</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="top-rated-product-item clearfix">
-                                        <div class="top-rated-product-img">
-                                            <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                                        </div>
-                                        <div class="top-rated-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <h6><a href="product-details.html">Coil Spring Conversion</a></h6>
-                                            <div class="product-price">
-                                                <span>$49.00</span>
-                                                <del>$65.00</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- Banner Widget -->
-                        <div class="widget ltn__banner-widget">
-                            <a href="shop.html"><img src="img/banner/2.jpg" alt="#"></a>
-                        </div>
+
                     </aside>
                 </div>
             </div>
@@ -343,27 +301,19 @@
             </div>
             <div class="row ltn__related-product-slider-one-active slick-arrow-1">
                 <!-- ltn__product-item -->
+
+                @foreach ($productrelateds as $productrelated)
                 <div class="col-lg-12">
                     <div class="ltn__product-item ltn__product-item-3 text-center">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/7.png" alt="#"></a>
+                            <a href="product-details.html"><img src="{{$productrating->image_url}}" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
-                                    <li class="sale-badge">New</li>
+                                    <li class="sale-badge"></li>
                                 </ul>
                             </div>
                             <div class="product-hover-action">
                                 <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
                                             <i class="far fa-heart"></i></a>
@@ -381,249 +331,19 @@
                                     <li><a href="#"><i class="far fa-star"></i></a></li>
                                 </ul>
                             </div>
-                            <h2 class="product-title"><a href="product-details.html">Red Hot Tomato</a></h2>
+                            <h2 class="product-title"><a href="product-details.html">{{$productrating->name}}</a></h2>
                             <div class="product-price">
-                                <span>$149.00</span>
-                                <del>$162.00</del>
+                                <span>{{Currency::format($productrating->price)}}</span>
+                                @if ($productrating->compare_price)
+                                <del>{{Currency::format($productrating->compare_price)}}</del>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3 text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/8.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-ratting">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h2 class="product-title"><a href="product-details.html">Vegetables Juices</a></h2>
-                            <div class="product-price">
-                                <span>$62.00</span>
-                                <del>$85.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3 text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/9.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-ratting">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h2 class="product-title"><a href="product-details.html">Orange Fresh Juice</a></h2>
-                            <div class="product-price">
-                                <span>$75.00</span>
-                                <del>$92.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3 text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/10.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-ratting">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h2 class="product-title"><a href="product-details.html">Poltry Farm Meat</a></h2>
-                            <div class="product-price">
-                                <span>$78.00</span>
-                                <del>$85.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3 text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-ratting">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h2 class="product-title"><a href="product-details.html">Fresh Butter Cake</a></h2>
-                            <div class="product-price">
-                                <span>$150.00</span>
-                                <del>$180.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-12">
-                    <div class="ltn__product-item ltn__product-item-3 text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="sale-badge">New</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Add to Cart" data-toggle="modal" data-target="#add_to_cart_modal">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-ratting">
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <h2 class="product-title"><a href="product-details.html">Orange Sliced Mix</a></h2>
-                            <div class="product-price">
-                                <span>$150.00</span>
-                                <del>$180.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
+
                 <!--  -->
             </div>
         </div>
@@ -640,48 +360,44 @@
                             <div class="col-xl-3 col-md-6 col-12">
                                 <div class="ltn__feature-item ltn__feature-item-8">
                                     <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/11.png" alt="#">
+                                        <img src="{{asset('front/img/icons/icon-img/11.png')}}" alt="#">
                                     </div>
                                     <div class="ltn__feature-info">
-                                        <h4>Curated Products</h4>
-                                        <p>Provide Curated Products for
-                                            all product over $100</p>
+                                        <h4>المنتجات المنسقة</h4>
+                                        <p>تقديم منتجات منسقة لجميع المنتجات التي تزيد قيمتها عن 100 دولار</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6 col-12">
                                 <div class="ltn__feature-item ltn__feature-item-8">
                                     <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/12.png" alt="#">
+                                        <img src="{{asset('front/img/icons/icon-img/12.png')}}" alt="#">
                                     </div>
                                     <div class="ltn__feature-info">
-                                        <h4>Handmade</h4>
-                                        <p>We ensure the product quality
-                                            that is our main goal</p>
+                                        <h4>صنع يدوي</h4>
+                                        <p>نحن نضمن جودة المنتج الذي هو هدفنا الرئيسي</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6 col-12">
                                 <div class="ltn__feature-item ltn__feature-item-8">
                                     <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/13.png" alt="#">
+                                        <img src="{{asset('front/img/icons/icon-img/13.png')}}" alt="#">
                                     </div>
                                     <div class="ltn__feature-info">
-                                        <h4>Natural Food</h4>
-                                        <p>Return product within 3 days
-                                            for any product you buy</p>
+                                        <h4>منتج طبيعى</h4>
+                                        <p>قم بإرجاع المنتج خلال 3 أيام لأي منتج تشتريه</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6 col-12">
                                 <div class="ltn__feature-item ltn__feature-item-8">
                                     <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/14.png" alt="#">
+                                        <img src="{{asset('front/img/icons/icon-img/14.png')}}" alt="#">
                                     </div>
                                     <div class="ltn__feature-info">
-                                        <h4>Free home delivery</h4>
-                                        <p>We ensure the product quality
-                                            that you can trust easily</p>
+                                        <h4>توصيل مجاني للمنزل</h4>
+                                        <p>نحن نضمن جودة المنتج التي يمكنك الوثوق بها بسهولة</p>
                                     </div>
                                 </div>
                             </div>

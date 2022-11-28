@@ -22,7 +22,9 @@ class ProductController extends Controller
         }
 
         $rating = $product->reviews()->avg('rating');
-        return view('front.products.product-details',compact('product','rating'));
+        $productratings = $product->reviews()->orderBy('rating', 'DESC')->get();
+        $productrelateds = Product::inRandomOrder()->limit(4)->get();
+        return view('front.products.product-details',compact('product','rating','productratings','productrelateds'));
     }
 
     public function reviews(Request $request , Product $product)

@@ -11,7 +11,7 @@
             </div>
             <div class="product-hover-action">
                 <ul>
-                    <li>
+                    {{-- <li>
                         <a href="#" title="Quick View" data-toggle="modal" data-target="#quick_view_modal">
                             <i class="far fa-eye"></i>
                         </a>
@@ -22,7 +22,7 @@
                             <i class="fas fa-shopping-cart"></i>
                         </a>
 
-                    </li>
+                    </li> --}}
                     <li>
 
                         <a href="{{route('favourites.store')}}" onclick="event.preventDefault(); document.getElementById('wish').submit()" title="Wishlist" data-toggle="modal" data-target="#liton_wishlist_modal">
@@ -163,7 +163,7 @@
     <!-- MODAL AREA END -->
 
     <!-- MODAL AREA START (Add To Cart Modal) -->
-    <div class="ltn__modal-area ltn__add-to-cart-modal-area">
+    {{-- <div class="ltn__modal-area ltn__add-to-cart-modal-area">
         <div class="modal fade" id="add_to_cart_modal" tabindex="-1">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">
@@ -203,7 +203,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- MODAL AREA END -->
 
     <!-- MODAL AREA START (Wishlist Modal) -->
