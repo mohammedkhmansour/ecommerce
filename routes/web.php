@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\FavouriteController;
 use App\Http\Controllers\Front\HomePageController;
 use App\Http\Controllers\Front\ProductController;
+use App\Http\Controllers\Front\ShopPageController;
 use App\Http\Middleware\UserCheck;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,10 @@ Route::get('/dashboard', function () {
     // return view('dashboard');
     return view('indexhome');
 })->middleware(['auth', 'verified',UserCheck::class])->name('dashboard');
+
+Route::get('shop',[ShopPageController::class,'index'])->name('shop');
+Route::get('shop/{id}',[ShopPageController::class,'filterCategory'])->name('filterCategory');
+
 
 Route::get('favourites',[FavouriteController::class,'index'])->name('favourites.index')->middleware('auth');
 Route::post('favourites',[FavouriteController::class,'store'])->name('favourites.store')->middleware('auth');

@@ -78,4 +78,14 @@ class Product extends Model
         }
         return round(100 - (100 * $this->price / $this->compare_price),1);
     }
+
+    public function scopeFilter(Builder $builder , $filters){
+
+        $builder->when($filters['name'] ?? false , function($builder , $value){
+            $builder->where('name','LIKE',"%{$value}%");
+        });
+
+
+    }
+
 }
