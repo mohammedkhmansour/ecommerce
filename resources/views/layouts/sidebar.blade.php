@@ -55,6 +55,8 @@
             </li>
             @endcan
                         <!-- menu item Charts-->
+                        @can('order.pending')
+
 
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
@@ -71,6 +73,7 @@
                             </ul>
                         </li>
 
+                        @endcan
 
 
 

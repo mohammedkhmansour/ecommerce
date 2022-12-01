@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,40 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::before(function($user , $abiilty){
+
+            if ($user->type == 'super-admin') {
+                return true;
+            }
+        });
+
+        Gate::define('order.pending',function($user){
+
+            return false;
+        });
+        Gate::define('order.rocessing',function($user){
+
+            return false;
+        });
+        Gate::define('order.completed',function($user){
+
+            return false;
+        });
+        Gate::define('order.details',function($user){
+
+            return false;
+        });
+        Gate::define('order.PendingToprocessing',function($user){
+
+            return false;
+        });
+        Gate::define('order.ProcessingTocompleted',function($user){
+
+            return false;
+        });
+        Gate::define('order.destroy',function($user){
+
+            return false;
+        });
     }
 }
