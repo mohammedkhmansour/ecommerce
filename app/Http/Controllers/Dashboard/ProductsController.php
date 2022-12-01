@@ -19,6 +19,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $this->authorize('view-any', Product::class);
+
 
         $products = Product::with('category')->orderBy('id', 'desc')->paginate();
 
@@ -32,6 +34,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', product::class);
+
         $categories = Category::all();
         $product = new Product;
         return view('dashboard.products.create',compact('categories','product'));
@@ -45,6 +49,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Product::class);
+
         $this->rouls($request);
 
         $data = $request->except('image','tag');
@@ -125,6 +131,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::with('category','tags')->findOrFail($id);
+        $this->authorize('update', $product);
+
         $categories = Category::all();
         $tags = implode(', ', $product->tags()->pluck('name')->toArray());
 
@@ -144,6 +152,7 @@ class ProductsController extends Controller
 
 
         $product = Product::findOrFail($id);
+        $this->authorize('update', $product);
 
         $data = $request->except('image','tag');
 
@@ -216,6 +225,9 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
+        $this->authorize('delete', $product);
+
+
         $product->delete();
 
         flash()->addError('تم الحذف بنجاح');

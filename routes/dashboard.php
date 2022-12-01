@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\CategoriesController;
 use App\Http\Controllers\Dashboard\OredersManegmentController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
+use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Front\NotifactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,7 @@ Route::group([
 
     Route::resource('categories',CategoriesController::class);
     Route::resource('products',ProductsController::class);
+    Route::resource('roles',RolesController::class);
+
 
 });

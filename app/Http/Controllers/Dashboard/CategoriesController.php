@@ -17,6 +17,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        $this->authorize('view-any', Category::class);
+
         $request = request();
 
         // $categories = Category::With('parent')->latest()->filter($request->query())->paginate(5);
@@ -36,6 +38,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Category::class);
+
         $parents = Category::get();
         $category = new Category;
         return view('dashboard.categories.create',compact('parents','category'));
@@ -49,6 +53,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Category::class);
 
        $this->rouls($request);
 
@@ -89,6 +94,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
+        $this->authorize('update', $category);
 
         $parents = Category::where('id','<>',$id)
         ->where(function($query) use($id){
@@ -112,6 +118,7 @@ class CategoriesController extends Controller
 
 
         $category = Category::findOrFail($id);
+        $this->authorize('update', $category);
 
         $data = $request->except('image');
 
@@ -144,6 +151,8 @@ class CategoriesController extends Controller
     {
 
         $category = Category::findOrFail($id);
+        $this->authorize('delete', $category);
+
         $category->delete();
 
         flash()->addError('تم الحذف بنجاح');

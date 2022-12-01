@@ -19,6 +19,9 @@
             </li>
             <!-- menu title -->
             <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
+            @can('view-any',App\Models\Category::class)
+
+
             <!-- menu item Elements-->
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
@@ -33,7 +36,10 @@
                     <li><a href="{{route('categories.trashed')}}">التصنيفات المؤرشفة</a></li>
                 </ul>
             </li>
+            @endcan
             <!-- menu item calendar-->
+            @can('view-any',App\Models\Product::class)
+
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
                     <div class="pull-left"><i class="ti-calendar"></i><span
@@ -47,7 +53,9 @@
                     <li><a href="{{route('products.trashed')}}">المنتجات المؤرشفة</a></li>
                 </ul>
             </li>
+            @endcan
                         <!-- menu item Charts-->
+
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
                                 <div class="pull-left"><i class="ti-pie-chart"></i><span
@@ -55,6 +63,7 @@
                                 <div class="pull-right"><i class="ti-plus"></i></div>
                                 <div class="clearfix"></div>
                             </a>
+
                             <ul id="chart" class="collapse" data-parent="#sidebarnav">
                                 <li> <a href="{{route('order.pending')}}">طلبات قيد الانتظار</a> </li>
                                 <li> <a href="{{route('order.processing')}}">طلبات قيد المعالجة </a> </li>
@@ -62,37 +71,25 @@
                             </ul>
                         </li>
 
-            <!-- menu item todo-->
-            <li>
-                <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                        list</span> </a>
-            </li>
-            <!-- menu item chat-->
-            <li>
-                <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                    </span></a>
-            </li>
-            <!-- menu item mailbox-->
-            <li>
-                <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail box</span>
-                    <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
-            </li>
+
 
 
             <!-- menu font icon-->
+            @can('view-any',App\Models\Role::class)
+
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#font-icon">
-                    <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">font icon</span>
+                    <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">الادوار والصلاحيات</span>
                     </div>
                     <div class="pull-right"><i class="ti-plus"></i></div>
                     <div class="clearfix"></div>
                 </a>
                 <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                    <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                    <li> <a href="themify-icons.html">Themify icons</a> </li>
-                    <li> <a href="weather-icon.html">Weather icons</a> </li>
+                    <li> <a href="{{route('roles.index')}}">كل الصلاحيات</a> </li>
+                    <li> <a href="{{route('roles.create')}}">اضافة صلاحية جديدة</a> </li>
                 </ul>
             </li>
+            @endcan
             <!-- menu title -->
             <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
             <!-- menu item Widgets-->

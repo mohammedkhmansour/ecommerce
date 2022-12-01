@@ -70,4 +70,20 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Product::class,'favourites');
     }
+
+    public function hasAbility($ability)
+    {
+        foreach ($this->roles as $role) {
+            if (in_array($ability, $role->abilities)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
