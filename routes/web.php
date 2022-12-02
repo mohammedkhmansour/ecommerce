@@ -30,6 +30,8 @@ Route::get('/dashboard', function () {
     return view('indexhome');
 })->middleware(['auth', 'verified',UserCheck::class])->name('dashboard');
 
+Route::view('about','front.about');
+
 Route::get('shop',[ShopPageController::class,'index'])->name('shop');
 Route::get('shop/{id}',[ShopPageController::class,'filterCategory'])->name('filterCategory');
 

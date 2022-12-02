@@ -109,7 +109,7 @@
 
                                         <li><a href="contact.html">المتجر</a></li>
 
-                                        <li><a href="contact.html">من نحن</a></li>
+                                        <li><a href="{{url('/about')}}">من نحن</a></li>
 
                                         <li><a href="contact.html">مثال على صفحة</a></li>
                                         <li><a href="contact.html">مثال على صفحة</a></li>
