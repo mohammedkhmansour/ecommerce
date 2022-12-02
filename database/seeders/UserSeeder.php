@@ -30,7 +30,9 @@ class UserSeeder extends Seeder
             'email'         => 'osama@gmail.com',
             'password'      => Hash::make(123456789),
             'phone'  => '0597823211',
-            'statuse'   => 'active'
+            'statuse'   => 'active',
+            'type'      => 'admin'
+
 
         ]);
 
@@ -39,7 +41,9 @@ class UserSeeder extends Seeder
             'email'         => 'baraa@gmail.com',
             'password'      => Hash::make(123456789),
             'phone'  => '0597888611',
-            'statuse'   => 'active'
+            'statuse'   => 'active',
+            'type'      => 'admin'
+
 
         ]);
     }
