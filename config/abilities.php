@@ -19,4 +19,10 @@ return [
     'roles.create' => 'Create roles',
     'roles.update' => 'Update roles',
     'roles.delete' => 'Delete roles',
+
+    'contacts.view-any' => 'View all contacts',
+    'contacts.view' => 'View contact',
+    'contacts.create' => 'Create contacts',
+    'contacts.update' => 'Update contacts',
+    'contacts.delete' => 'Delete contacts',
 ];

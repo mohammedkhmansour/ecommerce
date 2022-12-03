@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\OredersManegmentController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
@@ -48,6 +49,12 @@ Route::group([
 
     Route::get('admin/profile',[ProfilesController::class,'edit'])->name('profile.edit');
     Route::put('admin/profile',[ProfilesController::class,'update'])->name('profile.update');
+
+    Route::get('contact',[ContactController::class,'index'])->name('contact.index');
+    Route::get('show/{id}',[ContactController::class,'show'])->name('contact.show');
+
+    Route::delete('contact/{id}',[ContactController::class,'destroy'])->name('contact.destroy');
+
 
     Route::resource('categories',CategoriesController::class);
     Route::resource('products',ProductsController::class);

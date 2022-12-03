@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Middleware\UserCheck;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\CartController;
@@ -46,6 +47,9 @@ Route::post('products/{product}/reviews',[ProductController::class,'reviews'])->
 
 Route::get('products',[ProductController::class,'index'])->name('front.products.index');
 Route::get('/products/{product:slug}',[ProductController::class,'show'])->name('front.products.show');
+
+Route::get('contact',[ContactController::class,'homeContact'])->name('homeContact');
+Route::post('contact',[ContactController::class,'store'])->name('contact.store');
 
 });
 

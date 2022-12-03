@@ -94,9 +94,14 @@
             </li>
             @endcan
             <!-- menu title -->
-            <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
-            <!-- menu item Widgets-->
+            @can('view-any',App\Models\Contact::class)
+
             <li>
+                <a href="{{route('contact.index')}}"><i class="ti-location-pin"></i><span class="right-nav-text">الرسائل</span>
+                </a>
+            </li>            <!-- menu item Widgets-->
+            <li>
+            @endcan
                 <a href="widgets.html"><i class="ti-blackboard"></i><span
                         class="right-nav-text">Widgets</span> <span
                         class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
