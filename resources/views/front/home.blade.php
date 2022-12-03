@@ -270,7 +270,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h1 class="section-title">منتجاتنا</h1>
+                        <h1 class="section-title">{{__('front.منتجاتنا')}}</h1>
                     </div>
                     <div class="row ltn__tab-product-slider-one-active--- slick-arrow-1">
 
@@ -365,7 +365,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h1 class="section-title">منتجات مميزة</h1>
+                        <h1 class="section-title">{{__('front.منتجات مميزة')}}</h1>
                     </div>
                 </div>
             </div>

@@ -105,16 +105,30 @@
                             <nav>
                                 <div class="ltn__main-menu">
                                     <ul>
-                                        <li><a href="contact.html">الرئيسية</a></li>
+                                        <li><a href="{{route('home')}}">{{__('front.الرئيسية')}}</a></li>
 
-                                        <li><a href="contact.html">المتجر</a></li>
+                                        <li><a href="{{route('shop')}}">{{__('front.المتجر')}}</a></li>
 
-                                        <li><a href="{{url('/about')}}">من نحن</a></li>
+                                        <li><a href="{{url('/about')}}">{{__('front.من نحن')}}</a></li>
 
-                                        <li><a href="contact.html">مثال على صفحة</a></li>
-                                        <li><a href="contact.html">مثال على صفحة</a></li>
+                                        <li><a href="#">{{__('front.مثال على صفحة')}}</a></li>
+                                        <li><a href="#">{{__('front.مثال على صفحة')}}</a></li>
+                                        <li class="menu-icon"><a href="#">{{__('front.اللغة')}}</a>
+                                            <ul class="sub-menu ltn__sub-menu-col-2---">
 
-                                        <li class="special-link"><a href="contact.html">اتصل بنا</a></li>
+                                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                <li>
+                                                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                        {{ $properties['native'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                            </ul>
+                                        </li>
+
+
+
+                                        <li class="special-link"><a href="contact.html">{{__('front.اتصل بنا')}}</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -156,8 +170,8 @@
                                         </form>
 
                                         @else
-                                        <li><a href="{{route('login')}}">تسجيل الدخول</a></li>
-                                        <li><a href="{{route('register')}}">التسجيل</a></li>
+                                        <li><a href="{{route('login')}}">{{__('front.تسجيل الدخول')}}</a></li>
+                                        <li><a href="{{route('register')}}">{{__('front.تسجيل')}}</a></li>
                                         @endauth
 
 
