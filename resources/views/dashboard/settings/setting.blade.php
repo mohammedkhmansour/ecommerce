@@ -1,9 +1,9 @@
 @extends('layouts.master')
-@section('title','التصنيفات')
-@section('page-title','اضافة تصنيف')
+@section('title','الاعدادت')
+@section('page-title','الاعدادت')
 @section('breadcrumb')
 @parent
-<li class="breadcrumb-item active">اضافة تصنيف </li>
+<li class="breadcrumb-item active"> الاعدادت </li>
 @endsection
 
 @section('content')

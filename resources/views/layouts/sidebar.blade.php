@@ -113,6 +113,9 @@
                 </a>
                 <ul id="Form" class="collapse" data-parent="#sidebarnav">
                     <li> <a href="{{route('settings.edit')}}">الاعدادت العامة</a> </li>
+                    <li> <a href="{{route('sliders.index')}}"> السلايدر</a> </li>
+                    <li> <a href="{{route('testemonials.index')}}">الاراء</a> </li>
+
                 </ul>
             </li>
             <!-- menu item table -->

@@ -7,6 +7,8 @@ use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
 use App\Http\Controllers\Dashboard\RolesController;
 use App\Http\Controllers\Dashboard\SettingsController;
+use App\Http\Controllers\Dashboard\SliderController;
+use App\Http\Controllers\Dashboard\TestemonialController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Front\NotifactionController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +67,9 @@ Route::patch('/settings', [SettingsController::class, 'update'])
     Route::resource('products',ProductsController::class);
     Route::resource('roles',RolesController::class);
     Route::resource('users',UsersController::class);
+    Route::resource('sliders',SliderController::class);
+    Route::resource('testemonials',TestemonialController::class);
+
 
 
 

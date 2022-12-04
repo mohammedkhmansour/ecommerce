@@ -138,6 +138,11 @@
     <div class="ltn__slider-area ltn__slider-3  section-bg-1">
         <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
             <!-- ltn__slide-item -->
+            @php
+               $sliders = App\Models\Slider::get();
+            @endphp
+            @foreach ($sliders as $slider)
+
             <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3">
                 <div class="ltn__slide-item-inner">
                     <div class="container">
@@ -151,51 +156,26 @@
                                             </a>
                                         </div>
                                         <h6 class="slide-sub-title animated"><img src="{{asset('front/img/icons/icon-img/1.png')}}" alt="#"> منتجات أصلية 100٪</h6>
-                                        <h1 class="slide-title animated ">لذيذ وصحي<br>  طعام عضوي</h1>
+                                        <h1 class="slide-title animated ">{{$slider->title}}</h1>
                                         <div class="slide-brief animated d-none">
-                                            <p>تعمل التحليلات التنبؤية على تغيير صناعة العقارات بشكل كبير. في الماضي ، توفير البيانات بشكل سريع</p>
+                                            <p>{{$slider->description}}</p>
                                         </div>
                                         <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">اكتشف المنتجات</a>
+                                            <a href="{{route('shop')}}" class="theme-btn-1 btn btn-effect-1 text-uppercase">اكتشف المنتجات</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="slide-item-img">
-                                    <img src="{{asset('front/img/slider/23.png')}}" alt="#">
+                                    <img src="{{asset('storage/' . $slider->image_slide)}}" alt="#">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ltn__slide-item -->
-            <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3">
-                <div class="ltn__slide-item-inner  text-right">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 align-self-center">
-                                <div class="slide-item-info">
-                                    <div class="slide-item-info-inner ltn__slide-animation">
-                                        <h6 class="slide-sub-title animated"><img src="{{asset('front/img/icons/icon-img/1.png')}}" alt="#"> منتجات أصلية 100٪</h6>
-                                        <h1 class="slide-title animated ">أكثر حديقتنا <br>   الطعام المفضل</h1>
-                                        <div class="slide-brief animated">
-                                            <p>تعمل التحليلات التنبؤية على تغيير صناعة العقارات بشكل كبير. في الماضي ، توفير البيانات بشكل سريع</p>
-                                        </div>
-                                        <div class="btn-wrapper animated">
-                                            <a href="shop.html" class="theme-btn-1 btn btn-effect-1 text-uppercase">اكتشف المنتجات</a>
-                                            <a href="about.html" class="btn btn-transparent btn-effect-3 text-uppercase">يتعلم أكثر</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slide-item-img slide-img-left">
-                                    <img src="{{asset('front/img/slider/21.png')}}" alt="#">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
+            @endforeach
+
+
         </div>
     </div>
     <!-- SLIDER AREA END -->
@@ -387,92 +367,42 @@
     <!-- VIDEO AREA END -->
 
     <!-- TESTIMONIAL AREA START (testimonial-4) -->
-    <div class="ltn__testimonial-area section-bg-1 pt-290 pb-70">
+    <div class="ltn__testimonial-area section-bg-1 pt-90 pb-70">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area ltn__section-title-2 text-center">
-                        <h6 class="section-subtitle ltn__secondary-color">//  Testimonials</h6>
-                        <h1 class="section-title">Clients Feedbacks<span>.</span></h1>
+                        <h6 class="section-subtitle ltn__secondary-color">//  اراء العملاء</h6>
+                        <h1 class="section-title">اراء عملائنا <span>.</span></h1>
                     </div>
                 </div>
             </div>
             <div class="row ltn__testimonial-slider-3-active slick-arrow-1 slick-arrow-1-inner">
+
+                @php
+                $testemnials = App\Models\Testemonial::get();
+             @endphp
+                @foreach ($testemnials as $testemnial)
+
                 <div class="col-lg-12">
                     <div class="ltn__testimonial-item ltn__testimonial-item-4">
                         <div class="ltn__testimoni-img">
-                            <img src="{{asset('front/img/testimonial/6.jpg')}}" alt="#">
+                            <img src="{{asset('storage/' . $testemnial->image_testemonial)}}" alt="#">
                         </div>
                         <div class="ltn__testimoni-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <h4>Rosalina D. William</h4>
-                            <h6>Founder</h6>
+                            <p>{{$testemnial->description}} </p>
+                            <h4>{{$testemnial->title}}</h4>
+                            <h6>{{$testemnial->sub_title}}</h6>
                         </div>
                         <div class="ltn__testimoni-bg-icon">
                             <i class="far fa-comments"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                        <div class="ltn__testimoni-img">
-                            <img src="{{asset('front/img/testimonial/7.jpg')}}" alt="#">
-                        </div>
-                        <div class="ltn__testimoni-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <h4>Rosalina D. William</h4>
-                            <h6>Founder</h6>
-                        </div>
-                        <div class="ltn__testimoni-bg-icon">
-                            <i class="far fa-comments"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                        <div class="ltn__testimoni-img">
-                            <img src="{{asset('front/img/testimonial/1.jpg')}}" alt="#">
-                        </div>
-                        <div class="ltn__testimoni-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <h4>Rosalina D. William</h4>
-                            <h6>Founder</h6>
-                        </div>
-                        <div class="ltn__testimoni-bg-icon">
-                            <i class="far fa-comments"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                        <div class="ltn__testimoni-img">
-                            <img src="{{asset('front/img/testimonial/2.jpg')}}" alt="#">
-                        </div>
-                        <div class="ltn__testimoni-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <h4>Rosalina D. William</h4>
-                            <h6>Founder</h6>
-                        </div>
-                        <div class="ltn__testimoni-bg-icon">
-                            <i class="far fa-comments"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                        <div class="ltn__testimoni-img">
-                            <img src="{{asset('front/img/testimonial/5.jpg')}}" alt="#">
-                        </div>
-                        <div class="ltn__testimoni-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <h4>Rosalina D. William</h4>
-                            <h6>Founder</h6>
-                        </div>
-                        <div class="ltn__testimoni-bg-icon">
-                            <i class="far fa-comments"></i>
-                        </div>
-                    </div>
-                </div>
+
+                @endforeach
+
+
                 <!--  -->
             </div>
         </div>
