@@ -102,27 +102,17 @@
             </li>            <!-- menu item Widgets-->
             <li>
             @endcan
-                <a href="widgets.html"><i class="ti-blackboard"></i><span
-                        class="right-nav-text">Widgets</span> <span
-                        class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
-            </li>
+
             <!-- menu item Form-->
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#Form">
-                    <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">Form &
-                            Editor</span></div>
+                    <div class="pull-left"><i class="ti-files"></i><span class="right-nav-text">الاعدادات
+                            </span></div>
                     <div class="pull-right"><i class="ti-plus"></i></div>
                     <div class="clearfix"></div>
                 </a>
                 <ul id="Form" class="collapse" data-parent="#sidebarnav">
-                    <li> <a href="editor.html">Editor</a> </li>
-                    <li> <a href="editor-markdown.html">Editor Markdown</a> </li>
-                    <li> <a href="form-input.html">Form input</a> </li>
-                    <li> <a href="form-validation-jquery.html">form validation jquery</a> </li>
-                    <li> <a href="form-wizard.html">form wizard</a> </li>
-                    <li> <a href="form-repeater.html">form repeater</a> </li>
-                    <li> <a href="input-group.html">input group</a> </li>
-                    <li> <a href="toastr.html">toastr</a> </li>
+                    <li> <a href="{{route('settings.edit')}}">الاعدادت العامة</a> </li>
                 </ul>
             </li>
             <!-- menu item table -->
@@ -187,55 +177,7 @@
                 </a>
             </li>
             <!-- menu item Multi level-->
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">
-                    <div class="pull-left"><i class="ti-layers"></i><span class="right-nav-text">Multi level
-                            Menu</span></div>
-                    <div class="pull-right"><i class="ti-plus"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="multi-level" class="collapse" data-parent="#sidebarnav">
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth">Level item 1
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="auth" class="collapse">
-                            <li>
-                                <a href="javascript:void(0);" data-toggle="collapse"
-                                    data-target="#login">Level item 1.1<div class="pull-right"><i
-                                            class="ti-plus"></i></div>
-                                    <div class="clearfix"></div>
-                                </a>
-                                <ul id="login" class="collapse">
-                                    <li>
-                                        <a href="javascript:void(0);" data-toggle="collapse"
-                                            data-target="#invoice">level item 1.1.1<div class="pull-right"><i
-                                                    class="ti-plus"></i></div>
-                                            <div class="clearfix"></div>
-                                        </a>
-                                        <ul id="invoice" class="collapse">
-                                            <li> <a href="#">level item 1.1.1.1</a> </li>
-                                            <li> <a href="#">level item 1.1.1.2</a> </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li> <a href="#">level item 1.2</a> </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#error">level item
-                            2<div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="error" class="collapse">
-                            <li> <a href="#">level item 2.1</a> </li>
-                            <li> <a href="#">level item 2.2</a> </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
     </div>
 </div>

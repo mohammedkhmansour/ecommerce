@@ -2,11 +2,13 @@
 
 namespace App\View\Components;
 
+use App\Models\Setting;
 use Illuminate\View\Component;
 
 class FrontLayout extends Component
 {
     public $title;
+    public $settings;
     /**
      * Create a new component instance.
      *
@@ -14,6 +16,11 @@ class FrontLayout extends Component
      */
     public function __construct($title = null)
     {
+        $settings = Setting::get();
+        foreach($settings as $setting){
+            $this->settings = $setting;
+
+        }
         $this->title = $title ?? config('app.name');
     }
 

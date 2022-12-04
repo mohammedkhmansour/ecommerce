@@ -56,10 +56,10 @@ Route::group([
 
     Route::delete('contact/{id}',[ContactController::class,'destroy'])->name('contact.destroy');
 
-//     Route::get('/settings', [SettingsController::class, 'edit'])
-//     ->name('settings.edit');
-// Route::patch('/settings', [SettingsController::class, 'update'])
-//     ->name('settings.update');
+    Route::get('/settings', [SettingsController::class, 'edit'])
+    ->name('settings.edit');
+Route::patch('/settings', [SettingsController::class, 'update'])
+    ->name('settings.update');
 
     Route::resource('categories',CategoriesController::class);
     Route::resource('products',ProductsController::class);

@@ -9,16 +9,9 @@ class Setting extends Model
 {
     use HasFactory;
 
-    const CACHE_KEY = 'app_settings';
-
-    protected $primaryKey = 'name';
-
-    protected $keyType = 'string';
-
-    public $incrementing = false;
 
     protected $fillable = [
-        'name', 'value',
+        'name', 'logo','description','face','insta','twitter','email','phone'
     ];
 
 }

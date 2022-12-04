@@ -96,7 +96,7 @@
                     <div class="col">
                         <div class="site-logo-wrap">
                             <div class="site-logo">
-                                <a href="{{route('home')}}"><img src="img/logo.png" alt="Logo"></a>
+                                <a href="{{route('home')}}"><img src="{{asset('storage/' . $settings->logo)}}" alt="Logo"></a>
                             </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                         <div class="footer-widget footer-about-widget">
                             <div class="footer-logo">
                                 <div class="site-logo">
-                                    <img src="img/logo.png" alt="Logo">
+                                    <img src="{{asset('storage/' . $settings->logo)}}" alt="Logo">
                                 </div>
                             </div>
                             <p>لوريم إيبسوم هو ببساطة نص شكلي في صناعة التنضيد والتنضيد. لوريم إيبسوم هو نص شكلي للطباعة.</p>

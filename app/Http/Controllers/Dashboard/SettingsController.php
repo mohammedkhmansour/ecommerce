@@ -5,24 +5,25 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Symfony\Component\Intl\Currencies;
-use Symfony\Component\Intl\Locales;
+
 
 class SettingsController extends Controller
 {
     public function edit()
     {
-        $settings = Setting::pluck('value', 'name');
+        $settings = Setting::get();
+        foreach($settings as $setting){
+            return view('dashboard.settings.setting', [
+                'setting' => $setting,
+            ]);
+        }
 
-        return view('dashboard.settings.setting', [
-            'currencies' => Currencies::getNames(),
-            'locales' => Locales::getNames(),
-            'settings' => $settings,
-        ]);
+
     }
 
     public function update(Request $request)
     {
+        $settings = Setting::first();
         $data = $request->except('logo');
 
         if ($request->hasFile('logo')) {
@@ -36,21 +37,10 @@ class SettingsController extends Controller
             }
         }
 
-        $request->validate([
-            'settings.app_name' => 'required',
-        ]);
+            $settings->update($data);
 
-        foreach ($request->post('settings') as $key => $value) {
-            $value = $data;
-            Setting::updateOrCreate([
-                'name' => str_replace('_', '.', $key),
-            ], [
-                'value' => $value,
-            ]);
-        }
 
         // event('settings.updated');
-
         return redirect()->route('settings.edit')
             ->with('success', 'Settings saved.');
     }
