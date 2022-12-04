@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\OredersManegmentController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\ProfilesController;
 use App\Http\Controllers\Dashboard\RolesController;
+use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Front\NotifactionController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,10 @@ Route::group([
 
     Route::delete('contact/{id}',[ContactController::class,'destroy'])->name('contact.destroy');
 
+//     Route::get('/settings', [SettingsController::class, 'edit'])
+//     ->name('settings.edit');
+// Route::patch('/settings', [SettingsController::class, 'update'])
+//     ->name('settings.update');
 
     Route::resource('categories',CategoriesController::class);
     Route::resource('products',ProductsController::class);
