@@ -260,7 +260,7 @@
                         <div class="ltn__product-item ltn__product-item-3 text-left">
                             <div class="product-img">
 
-                                <a href="product-details.html"><img src="{{$productloop->image_url}}" alt="#" loading="lazy"></a>
+                                <a href="product-details.html"><img src="{{$productloop->thumb_url}}" alt="#" loading="lazy"></a>
                                 <div class="product-badge">
                                     <ul>
                                         <li class="sale-badge">New</li>

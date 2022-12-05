@@ -29,6 +29,32 @@ class Product extends Model
         return asset('storage/' . $this->image);
     }
 
+    public function getThumbUrlAttribute()
+    {
+        if (!$this->image) {
+            return url('no_image.jpg');
+        }
+        if (Str::startsWith($this->image, ['http://', 'https://'])) {
+            return $this->image;
+        }
+        return route('images', [
+            'public', '265', '265', $this->image
+        ]);    }
+
+    // public function getThumbUrlAttribute()
+    // {
+    //     if ($this->image) {
+    //         if (strpos($this->image, 'http') === 0) {
+    //             return $this->image;
+    //         }
+    //         return route('images', [
+    //             'uploads', '265', '265', $this->image
+    //         ]);
+    //     }
+
+    //     return asset('images/default-image.jpg');
+    // }
+
     public function category(){
         return $this->BelongsTo(Category::class,'category_id','id')->withDefault();
     }

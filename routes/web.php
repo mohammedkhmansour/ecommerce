@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\HomePageController;
 use App\Http\Controllers\Front\ShopPageController;
 use App\Http\Controllers\Front\FavouriteController;
 use App\Http\Controllers\Front\AccountUserController;
+use App\Http\Controllers\ImagesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -60,7 +61,10 @@ Route::get('favourites',[FavouriteController::class,'index'])->name('favourites.
 Route::post('favourites',[FavouriteController::class,'store'])->name('favourites.store')->middleware('auth');
 Route::delete('favourites/{id}',[FavouriteController::class,'destroy'])->name('favourites.destroy')->middleware('auth');
 
-
+// images/300x200/products/image.png
+Route::get('images/{disk}/{width}x{height}/{image}', [ImagesController::class, 'index'])
+    ->name('images')
+    ->where('image', '.*');
 
 
 Route::get('checkout', [CheckoutController::class, 'create'])->name('checkout');
