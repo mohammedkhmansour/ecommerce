@@ -29,17 +29,17 @@ class Product extends Model
         return asset('storage/' . $this->image);
     }
 
-    public function getThumbUrlAttribute()
-    {
-        if (!$this->image) {
-            return url('no_image.jpg');
-        }
-        if (Str::startsWith($this->image, ['http://', 'https://'])) {
-            return $this->image;
-        }
-        return route('images', [
-            'public', '265', '265', $this->image
-        ]);    }
+    // public function getThumbUrlAttribute()
+    // {
+    //     if (!$this->image) {
+    //         return url('no_image.jpg');
+    //     }
+    //     if (Str::startsWith($this->image, ['http://', 'https://'])) {
+    //         return $this->image;
+    //     }
+    //     return route('images', [
+    //         'public', '265', '265', $this->image
+    //     ]);    }
 
     // public function getThumbUrlAttribute()
     // {

@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
@@ -61,6 +62,9 @@ class ProductsController extends Controller
              $data['image']  = $file->store('products',['disk'=>'public']);
          }
         }
+
+       $img = Image::make(storage_path('app/public/'.$data['image']));
+       $img->crop(260,260)->save();
              $data['slug']  = Str::slug($request->post('name'));
 
          $products = Product::create($data);
@@ -163,7 +167,8 @@ class ProductsController extends Controller
         if($new_image){
             $data['image'] = $new_image;
         }
-
+        $img = Image::make(storage_path('app/public/'.$data['image']));
+        $img->resize(260,260)->save();
         $product->update($data);
 
         // $tags = explode(',', $request->post('tag'));
