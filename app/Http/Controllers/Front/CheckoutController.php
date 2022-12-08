@@ -51,6 +51,8 @@ class CheckoutController extends Controller
                 'city'     => $request->post('city'),
                 'postal_code'     => $request->post('postal_code'),
                 'state'     => $request->post('state'),
+                'total'     => $cart->total(),
+
             ]);
 
             foreach($cart->get() as $item){
@@ -79,7 +81,9 @@ class CheckoutController extends Controller
             throw $e;
         }
 
-    return redirect()->route('home');
+    // return redirect()->route('home');
+    return redirect()->route('payments.create', $order->id);
+
 
     }
 

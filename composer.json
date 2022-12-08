@@ -13,6 +13,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "mcamara/laravel-localization": "^1.7",
+        "paypal/paypal-checkout-sdk": "^1.0",
         "php-flasher/flasher-laravel": "^1.7",
         "pusher/pusher-php-server": "^7.2",
         "symfony/intl": "^6.1"

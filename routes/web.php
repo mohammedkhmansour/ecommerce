@@ -11,6 +11,7 @@ use App\Http\Controllers\Front\ShopPageController;
 use App\Http\Controllers\Front\FavouriteController;
 use App\Http\Controllers\Front\AccountUserController;
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\PaymentsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -69,6 +70,16 @@ Route::get('images/{disk}/{width}x{height}/{image}', [ImagesController::class, '
 
 Route::get('checkout', [CheckoutController::class, 'create'])->name('checkout');
 Route::post('checkout', [CheckoutController::class, 'store']);
+
+Route::get('orders/{order}/payments/create', [PaymentsController::class, 'create'])
+    ->name('payments.create');
+Route::get('orders/{order}/payments/refund', [PaymentsController::class, 'refund'])
+    ->name('payments.refund');
+    Route::get('orders/{order}/payments/return', [PaymentsController::class, 'callback'])
+    ->name('payments.callback');
+Route::get('orders/{order}/payments/cancel', [PaymentsController::class, 'cancel'])
+    ->name('payments.cancel');
+
 
 Route::resource('cart', CartController::class);
 
