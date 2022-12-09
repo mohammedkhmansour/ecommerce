@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('content')
+@php
+ $products = App\Models\Product::all();
+ $users = App\Models\User::all();
+ $message=App\Models\Contact::all();
+ $orders =  App\Models\Order::all();
+@endphp
 <div class="row">
     <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
         <div class="card card-statistics h-100">
@@ -11,8 +17,8 @@
                         </span>
                     </div>
                     <div class="float-right text-right">
-                        <p class="card-text text-dark">Visitors</p>
-                        <h4>65,650</h4>
+                        <p class="card-text text-dark">المنتجات</p>
+                        <h4>{{count($products)}}</h4>
                     </div>
                 </div>
                 <p class="text-muted pt-3 mb-0 mt-2 border-top">
@@ -31,8 +37,8 @@
                         </span>
                     </div>
                     <div class="float-right text-right">
-                        <p class="card-text text-dark">Orders</p>
-                        <h4>656</h4>
+                        <p class="card-text text-dark">الطلبات</p>
+                        <h4>{{count($orders)}}</h4>
                     </div>
                 </div>
                 <p class="text-muted pt-3 mb-0 mt-2 border-top">
@@ -47,12 +53,12 @@
                 <div class="clearfix">
                     <div class="float-left">
                         <span class="text-success">
-                            <i class="fa fa-dollar highlight-icon" aria-hidden="true"></i>
+                            <i class="fa fa-comments highlight-icon" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="float-right text-right">
-                        <p class="card-text text-dark">Revenue</p>
-                        <h4>$65656</h4>
+                        <p class="card-text text-dark">الرسائل</p>
+                        <h4>{{count($message)}}</h4>
                     </div>
                 </div>
                 <p class="text-muted pt-3 mb-0 mt-2 border-top">
@@ -67,12 +73,12 @@
                 <div class="clearfix">
                     <div class="float-left">
                         <span class="text-primary">
-                            <i class="fa fa-twitter highlight-icon" aria-hidden="true"></i>
+                            <i class="fa fa-user highlight-icon" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="float-right text-right">
-                        <p class="card-text text-dark">Followers</p>
-                        <h4>62,500+</h4>
+                        <p class="card-text text-dark">المستخدمين</p>
+                        <h4>{{count($users)}}</h4>
                     </div>
                 </div>
                 <p class="text-muted pt-3 mb-0 mt-2 border-top">
